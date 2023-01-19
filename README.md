@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
- <img src="images/network.png" width="700" alt="Logo" class="center">
+ <p style="text-align:center;"><img src="images/network.png" width="700" alt="Logo"></p>
 
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
