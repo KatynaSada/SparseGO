@@ -2,22 +2,19 @@
 <br />
 <div align="center">
   <a href="https://github.com/KatynaSada/SparseGO_code">
-    <img src="images/logoSparseGO.png" alt="Logo" width="80" height="80">
+    <img src="images/logoSparseGO.png" width="400" alt="Logo" >
   </a>
   
   <h3 align="center">SparseGO</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A VNN to predict cancer drug response using a sparse explainable neural network
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <b>+<b>
     <br />
+    a method to predict the mechanism of action of drugs. 
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/KatynaSada/SparseGO_code/issues">Request Feature</a>
   </p>
 </div>
 
