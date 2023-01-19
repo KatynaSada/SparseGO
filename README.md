@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/KatynaSada/SparseGO_code">
-    <img src="images/logoSparseGO.png" width="900" alt="Logo" >
+    <img src="images/logoSparseGO.png" width="400" alt="Logo" >
   </a>
   
   <h3 align="center">SparseGO</h3>
@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
- <img src="images/network.png" width="400" alt="Logo" >
+ <img src="images/network.png" width="900" alt="Logo" >
 
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
