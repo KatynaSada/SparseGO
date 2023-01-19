@@ -10,7 +10,7 @@
   <p align="center">
     A VNN to predict cancer drug response using a sparse explainable neural network
     <br />
-    +
+    *+*
     <br />
     a method to predict the mechanism of action of drugs. 
     <br />
