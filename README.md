@@ -9,7 +9,6 @@
 
   <p align="center">
     A VNN to predict cancer drug response using a sparse explainable neural network
-    <br />
     +
     <br />
     a method to predict the mechanism of action of drugs. 
@@ -54,7 +53,7 @@
  <p align="center"><img src="images/network.png" width="700" alt="Logo"></p>
 
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Artificial intelligence (AI), and specifically Deep Neural Networks (DNNs), have been successfully applied to predict drug efficacy in cancer cell lines. However, understanding how the recommendation is carried out, is still a challenge when using DNNs. An algorithm called <a href="https://pubmed.ncbi.nlm.nih.gov/33096023/">DrugCell<a> showed that by simulating the Gene Ontology structure with a DNN, each neuron in the network can be assigned an interpretation. Here we present SparseGO, a sparse explainable neural network that extends this approach in two different ways: first, by optimizing the algorithm using sparse DNNs to accommodate any type of omics data as input, and second, by fusing an eXplainable Artificial Intelligence (XAI) technique with another machine learning algorithm to systematically predict the mechanism of action (MoA) of drugs.  
 
 Here's why:
 * Your time should be focused on creating something amazing. A project that solves a problem and helps others
