@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/KatynaSada/SparseGO_code">
-    <img src="https://drive.google.com/file/d/1GxbRvLJ4vy5u2pg4SwzxPgyHWg6cWQ1H/view?usp=share_link" alt="Logo" width="80" height="80">
+    <img src="https://drive.google.com/file/d/1GxbRvLJ4vy5u2pg4SwzxPgyHWg6cWQ1H/view" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Best-README-Template</h3>
