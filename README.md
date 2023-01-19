@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/KatynaSada/SparseGO_code">
-    <img src="images/logoSparseGO.png" width="100" alt="Logo" >
+    <img src="images/logoSparseGO.png" width="400" alt="Logo" >
   </a>
   
   <h3 align="center">SparseGO</h3>
