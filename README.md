@@ -8,9 +8,10 @@
   <h3 align="center">SparseGO</h3>
 
   <p align="center">
-    A VNN to predict cancer drug response using a sparse explainable neural network and a method to predict the mechanism of action of drugs. 
+    A VNN to predict cancer drug response using a sparse explainable neural network <b>+<b>
+    a method to predict the mechanism of action of drugs. 
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/KatynaSada/SparseGO_code/issues">Request Feature</a>
   </p>
 </div>
 
