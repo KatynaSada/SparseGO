@@ -4,6 +4,8 @@
   <a href="https://github.com/KatynaSada/SparseGO_code">
     <img src="https://drive.google.com/file/d/1GxbRvLJ4vy5u2pg4SwzxPgyHWg6cWQ1H/view" alt="Logo" width="80" height="80">
   </a>
+  
+  <a href="https://drive.google.com/uc?export=view&id=1BhAeGPcuYEOXYLQWwzEuDlfjB3egdKEw"><img src="https://drive.google.com/uc?export=view&id=1BhAeGPcuYEOXYLQWwzEuDlfjB3egdKEw" style="width: 500px; max-width: 100%; height: auto" title="Click for the larger version." /></a>
 
   <h3 align="center">Best-README-Template</h3>
 
