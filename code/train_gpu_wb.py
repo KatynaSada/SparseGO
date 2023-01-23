@@ -9,8 +9,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import util
 from util import *
-#from network import sparseGO_nn
-from network_dropout2 import sparseGO_nn
+from network import sparseGO_nn
+#from network_dropout import sparseGO_nn
 import argparse
 import time
 import wandb
@@ -27,10 +27,6 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
 
     # data for train and validation
      train_feature, train_label, val_feature, val_label = train_data
-
-     # !! Modify output/labels to make small AUCs important
-     # train_label = torch.log(train_label+10e-4)
-     # val_label = torch.log(val_label+10e-4)
 
      # data to GPU
      train_label_gpu = torch.autograd.Variable(train_label.cuda(cuda_id))
@@ -118,7 +114,6 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
          print('Val Loss: {:.4f}; Val Corr (pear.): {:.6f}'.format(val_cum_loss, val_corr))
          print('Val Corr (sp.): {:.6f}'.format(val_corr_spearman))
          print('Allocated after val:', round(torch.cuda.memory_allocated(0)/1024**3,3), 'GB')
-         #print('Cached after val:   ', round(torch.cuda.memory_reserved(0)/1024**3,3), 'GB')
 
          epoch_time_elapsed = time.time() - epoch_start_time
          print('Epoch time: {:.0f}m {:.0f}s'.format(
@@ -198,8 +193,6 @@ def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file
     model = torch.load(model_file, map_location='cuda:%d' % CUDA_ID)
 
     predict_feature, predict_label = predict_data
-    # !! Modify output/labels to make small AUCs important
-    # predict_label = torch.log(predict_label+10e-4)
 
     predict_label_gpu = predict_label.cuda(CUDA_ID)
 
@@ -231,7 +224,6 @@ def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file
     print('Test Corr (s): {:.4f}'.format(test_corr_spearman))
 
     print('Allocated:', round(torch.cuda.memory_allocated(0)/1024**3,1), 'GB')
-#    print('Cached:   ', round(torch.cuda.memory_cached(0)/1024**3,1), 'GB')
 
     wandb.log({"pearson_test_"+statistic: test_corr,
                "spearman_test_"+statistic: test_corr_spearman,
@@ -244,21 +236,13 @@ def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file
 
 since0 = time.time()
 parser = argparse.ArgumentParser(description='Train sparseGO')
-#inputdir="/Users/ksada/OneDrive - Tecnun/SparseGO_code/data/cross_validation/samples1/" # CHANGE
-inputdir="/Users/ksada/OneDrive - Tecnun/SparseGO_code/data/toy_example/" # CHANGE
-#inputdir="../data/" # CHANGE
 
-modeldir="../results/prueba_spyder_wb" # PUEDO CAMBIAR EL NOMBRE PARA GUARDAR EN OTRO SITIO
+inputdir="../data/toy_example/samples1/" # CHANGE
+modeldir="../results/toy_example/samples1/" # PUEDO CAMBIAR EL NOMBRE PARA GUARDAR EN OTRO SITIO
 ontology = "drugcell_ont.txt"
-#ontology = "ontology.txt"
-#mutation = "cell2mutation_clinical.txt"
 mutation = "cell2mutation.txt"
-#ontology = "lincs_ont.txt"
-#ontology = "lincs_ont_7.txt"
-#mutation = "cell2expression_clinical.txt"
-#mutation = "cell2expression.txt"
 
-parser.add_argument('-onto', help='Ontology file used to guide the neural network', type=str, default=inputdir+ontology)
+parser.add_argument('-onto', help='Ontology file used to create the neural network', type=str, default=inputdir+ontology)
 parser.add_argument('-train', help='Training dataset', type=str, default=inputdir+"drugcell_train.txt")
 parser.add_argument('-val', help='Validation dataset', type=str, default=inputdir+"drugcell_val.txt")
 parser.add_argument('-epoch', help='Training epochs for training', type=int, default=20)
@@ -274,7 +258,7 @@ parser.add_argument('-cell2id', help='Cell to ID mapping file', type=str, defaul
 parser.add_argument('-number_neurons_per_GO', help='Mapping for the number of neurons in each term in genotype parts', type=int, default=6)
 parser.add_argument('-number_neurons_per_final_GO', help='Mapping for the number of neurons in the root term', type=int, default=30)
 parser.add_argument('-drug_neurons', help='Mapping for the number of neurons in each layer', type=str, default='200,100,15')
-parser.add_argument('-final_neurons', help='The number of neurons in the top layer (before the output and after concatenating)', type=int, default=20)
+parser.add_argument('-final_neurons', help='The number of neurons before the output and after concatenating', type=int, default=20)
 
 parser.add_argument('-genotype', help='Mutation information for cell lines', type=str, default=inputdir+mutation)
 parser.add_argument('-fingerprint', help='Morgan fingerprint representation for drugs', type=str, default=inputdir+"drug2fingerprint.txt")
@@ -346,17 +330,15 @@ sweep_config = {
         },
         'batch_size': {
             #'values': [12000,13000,14000,15000]
-            #'values': [15000,18000,21000,30000]
-            'values': [15000] # 15000 ese el normal
+            'value': opt.batchsize # 15000 ese el normal
         },
         'learning_rate': {
-        # a flat distribution between 0 and 0.1
             #'distribution': 'uniform',
-            #'min': 0.01,
+            #'min': 0.01, # a flat distribution between 0.01 and 0.1
             #'max': 0.1
-            #'value': 0.1 # MUTACIONES
-            #'value': 0.2 # EXPRESION
-            'value': 0.1
+            #'value': 0.1 # mutations
+            #'value': 0.2 # expression
+            'value': opt.lr
             #'values': [0.001,0.01,0.02,0.1,0.2]
         },
         'optimizer': {
@@ -365,30 +347,20 @@ sweep_config = {
         },
         'num_neurons_per_GO': {
             #'values': [4,5,6,7]
-            'value': 6
+            #'value': 6
+            'value': opt.number_neurons_per_GO
         },
         'num_neurons_per_final_GO': {
             # 'distribution': 'int_uniform',
             # 'min': 6,
             # 'max': 40
-            'value': 30 # ESTE ES EL DE EXPRESION
-            #'value': 6 # ESTE ES EL DE MUTACIONES
-        },
-        # 'num_neurons_final': {
-        #     'distribution': 'int_uniform',
-        #     'min': 12,
-        #     'max': 50
-        # },
-        'num_neurons_drug_final': {
-            # 'distribution': 'int_uniform',
-            # 'min': 15,
-            # 'max': 50
-            'value': 50 # ESTE ES EL DE EXPRESION
-            #'value': 6 # ESTE ES EL DE MUTACIONES
+            #'value': 30 # expression
+            #'value': 6 # mutations
+            'value': opt.number_neurons_per_final_GO
         },
         'decay_rate': {
             #'values': [0, 0.01,0.001]
-            'value': 0.001
+            'value': opt.decay_rate
         },
         'criterion': {
             #'values': ['MSELoss', 'L1Loss']
@@ -398,9 +370,16 @@ sweep_config = {
             'value': opt.gpu_name
             #'value': 'RTX_A4000'
         },
+        'num_neurons_drug_final': {
+            # 'distribution': 'int_uniform',
+            # 'min': 15,
+            # 'max': 50
+            #'value': 50 # expression
+            #'value': 6 # mutations
+            'value': list(map(int, opt.drug_neurons.split(',')))[2]
+        },
         'drug_neurons': {
             'value': opt.drug_neurons
-            #'value': 'RTX_A4000'
         },
         'momentum': {
             #'distribution': 'uniform',
@@ -413,8 +392,6 @@ sweep_config = {
     }
 }
 
-
-
 # Initialize a new sweep
 # Arguments:
 #     – sweep_config: the sweep config dictionary defined above
@@ -425,22 +402,20 @@ def pipeline():
     # Initialize a new wandb run
     run = wandb.init(settings=wandb.Settings(start_method="thread"))
 
-    # Config is a variable that holds and saves hyperparameters and inputs
-    config = wandb.config
+    config = wandb.config # config is a variable that holds and saves hyperparameters and inputs
 
     num_neurons_per_GO = config.num_neurons_per_GO # neurons for each term
     num_neurons_per_final_GO = config.num_neurons_per_final_GO # neurons of final term (root term)
     num_neurons_drug = list(map(int, config.drug_neurons.split(','))) # neurons of drug layers
     num_neurons_drug[2] = config.num_neurons_drug_final
 
-    num_neurons_final = round((num_neurons_drug[2]+num_neurons_per_final_GO)/2) # ESTE ES EL DE EXPRESION
-    #num_neurons_final =12 # ESTE ES EL DE MUTACIONES
+    num_neurons_final = opt.final_neurons # neurons before the output and after concatenating both branches
+    #num_neurons_final = round((num_neurons_drug[2]+num_neurons_per_final_GO)/2) # expresion
 
     ###
 
     ## Training
     since3 = time.time()
-    #np.random.shuffle(layer_connections[0][:,1]) # shuffle genes
     model = sparseGO_nn(layer_connections,num_neurons_per_GO, num_neurons_per_final_GO, num_neurons_drug, num_neurons_final, drug_dim)
     time_elapsed3 = time.time() - since3
     print('\nModel created in {:.0f}m {:.0f}s'.format(
@@ -455,7 +430,7 @@ def pipeline():
     model.to(device)
 
     if config.optimizer=='sgd':
-        momentum=config.momentum # momentum=0.9 SIEMPRE HABIA PUESTO 0.9
+        momentum=config.momentum 
         print("Momentum: ", momentum)
         optimizer = torch.optim.SGD(model.parameters(), lr=config.learning_rate, momentum=momentum)
     elif config.optimizer=='adam':

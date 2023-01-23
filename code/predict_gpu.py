@@ -1,3 +1,7 @@
+"""
+    This script makes predictions using a pre-trained SparseGO network. 
+"""
+
 import sys
 import os
 import pandas as pd

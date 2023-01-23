@@ -134,11 +134,6 @@ class sparseGO_nn(nn.Module):
 
     # definition of forward function
     def forward(self, x):
-        #x = torch.randint(2, (1000, 5056))
-        #x=x*1.
-        #x=x.cuda(0)
-        #gene_input = gene_input.cuda(0)
-        #drug_input = drug_input.cuda(0)
         gene_input = x.narrow(1, 0, self.gene_dim) # genes features (Returns a new tensor that is a narrowed version)
         drug_input = x.narrow(1, self.gene_dim, self.drug_dim) # drugs features
 

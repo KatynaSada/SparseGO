@@ -1,3 +1,9 @@
+"""
+    This script creates the sparse linear layers with user-defined connections,
+    created using https://github.com/hyeon95y/SparseLinear but with some modifications to reduce the memory required.
+
+"""
+
 import math
 import warnings
 

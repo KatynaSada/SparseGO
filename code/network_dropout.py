@@ -1,5 +1,5 @@
 """
-    This script creates the SparseGO network with additional dropout layers
+    This script creates the SparseGO network with additional dropout layers.
 """
 
 import sys
