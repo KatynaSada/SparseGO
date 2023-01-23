@@ -68,7 +68,7 @@ This tutorial includes:
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Python][Python-image =x10]][Python-url]
+* [![Python][Python-image]][Python-url]
 * [![Pytorch][Pytorch-image]][Pytorch-url]
 * [![GeneOntology][GO-image]][GO-url]
 
@@ -174,7 +174,7 @@ Use this space to list resources you find helpful and would like to give credit 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[Python-image]: images/python.png
+[Python-image]: "images/python.png =10x"
 [Python-url]: https://www.python.org/
 [Pytorch-image]: images/pytorch.png
 [Pytorch-url]: https://pytorch.org/
