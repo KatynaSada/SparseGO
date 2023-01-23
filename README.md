@@ -68,7 +68,7 @@ This tutorial includes:
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Python][Python-image]][Python-url]{width=3}
+* [![Python][Python-image]][Python-url {width=3}]
 * [![Pytorch][Pytorch-image]][Pytorch-url]
 * [![GeneOntology][GO-image]][GO-url]
 
