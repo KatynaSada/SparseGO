@@ -80,8 +80,10 @@ This project includes instructions for:
 # Getting Started
 
 ```diff
-- The original <a href="https://pubmed.ncbi.nlm.nih.gov/33096023/">DrugCell<a> repository served as the basis for these instructions. I'd like to take this chance to thank the <a href="https://github.com/idekerlab">Trey Ideker Lab<a> at UCSD!
+- The original DrugCell repository served as the basis for these instructions. I'd like to take this chance to thank the Trey Ideker Lab at UCSD!
 ```
+* <a href="https://pubmed.ncbi.nlm.nih.gov/33096023/">DrugCell<a>
+* <a href="https://github.com/idekerlab">Trey Ideker Lab<a>
 
 ## Prerequisites
 
