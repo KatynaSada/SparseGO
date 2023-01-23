@@ -104,7 +104,9 @@ SparseGO training/testing scripts require the following environmental setup:
         ```
         where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
     * Weights & Biases · MLOps platform
+
       **1.** Create wandb free account at <a href="https://wandb.ai/site">https://wandb.ai/site<a>
+
       **2.**  Install the wandb library on your machine in a Python 3 environment
       ```angular2
       pip install wandb
@@ -117,12 +119,12 @@ SparseGO training/testing scripts require the following environmental setup:
 
 ## Environment set up for training and testing of SparseGO
     * Run the following command line inside the environment folder to set up a virtual environment (SparseGO).
-        ```angular2
+        ```
          conda env create -f SparseGO_environment.yml
         ```
     * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
     When training or testing using the bash scripts provided (_train_wb.sh_ or _test.sh_), there's no need to run this as the example bash scripts already have the command line.
-        ```angular2
+        ```
         source activate SparseGO
         ```
 
