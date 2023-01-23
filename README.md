@@ -195,9 +195,9 @@ Use this space to list resources you find helpful and would like to give credit 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[Python-image]: images/network.png
+[Python-image]: images/python.png
 [Python-url]: https://www.python.org/
-[Pytorch-image]: "images/pytorch.png"
+[Pytorch-image]: images/pytorch.png
 [Pytorch-url]: https://pytorch.org/
-[GO-image]: "images/geneontology.png"
+[GO-image]: images/geneontology.png
 [GO-url]: http://geneontology.org/
