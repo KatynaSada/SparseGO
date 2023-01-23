@@ -170,7 +170,6 @@ Required input files:
           The following is an example describing a sample hierarchy.
           ![](https://github.com/idekerlab/DrugCell/blob/master/misc/drugcell_ont_image_sample.png)
           ```
-
            GO:0045834	GO:0045923	default
            GO:0045834	GO:0043552	default
            GO:0045923	AKT2	gene
