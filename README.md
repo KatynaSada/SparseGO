@@ -68,7 +68,9 @@ This tutorial includes:
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* <img src=[Python-image] width="700" alt="Logo"></p>[Python-url]
+*   <a href="https://github.com/KatynaSada/SparseGO_code">
+    <img src="images/python.png" width="100" alt="Logo" >
+  </a>
 * [![Pytorch][Pytorch-image]][Pytorch-url]
 * [![GeneOntology][GO-image]][GO-url]
 
