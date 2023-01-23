@@ -181,7 +181,7 @@ Required input files:
 
          * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutations model.
          * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
-         * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files. 
+         * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
 
 <!-- CONTRIBUTING -->
 ## Contributing
