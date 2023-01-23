@@ -120,48 +120,48 @@ SparseGO training/testing scripts require the following environmental setup:
 ## Environment set up for training and testing of SparseGO
 * Run the following command line inside the environment folder to set up a virtual environment (SparseGO).
   ```angular2
-      conda env create -f SparseGO_environment.yml
+  conda env create -f SparseGO_environment.yml
   ```
 * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
     When training or testing using the bash scripts provided (_train_wb.sh_ or _test.sh_), there's no need to run this as the example bash scripts already have the command line.
   ```angular2
-        source activate SparseGO
+  source activate SparseGO
   ```
 
 # Training and testing SparseGO
 ## Required input files
 Required input files:
 1. Cell feature files:
-    * *_gene2ind.txt_*: Gene to ID mapping file
-    * *_cell2ind.txt_*: Cell to ID mapping file, a tab-delimited file where the 1st column is index of cells and the 2nd column is the name of cells (genotypes).
+    * **_gene2ind.txt_**: Gene to ID mapping file
+    * **_cell2ind.txt_**: Cell to ID mapping file, a tab-delimited file where the 1st column is index of cells and the 2nd column is the name of cells (genotypes).
     The column index of each gene should match with those in _gene2ind.txt_ file. The line number should
     match with the indices of cells in _cell2ind.txt_ file.
 
-    * *_cell2mutation.txt_* OR *_cell2expression.txt_*: choose the file depending on whether you want to train with mutations or with expression
+    * **_cell2mutation.txt_** OR **_cell2expression.txt_**: choose the file depending on whether you want to train with mutations or with expression
       * _cell2mutation.txt_: a comma-delimited file where each row has 3,008 binary values indicating each gene is mutated (1) or not (0).
       OR
       * _cell2expression.txt_: a comma-delimited file where each row has 15014 values indicating the expression of 15014 genes.
         * The script to download the expression data and create the file is provided in _extra_ folder (_get_expression_matrix.R_). It requires the _cell2ind.txt_ file.
 2. Drug feature files:
-    * *_drug2ind.txt_*: a tab-delimited file where the 1st column is index of drug and the 2nd column is
+    * **_drug2ind.txt_**: a tab-delimited file where the 1st column is index of drug and the 2nd column is
     identification of each drug (e.g., SMILES representation or name). The identification of drugs
     should match to those in _drug2fingerprint.txt_ file.
-    * *_drug2fingerprint.txt_*: a comma-delimited file where each row has 2,048 binary values which would form
+    * **_drug2fingerprint.txt_**: a comma-delimited file where each row has 2,048 binary values which would form
     , when combined, a Morgan Fingerprint representation of each drug.
     The line number should match with the indices of drugs in _drug2ind.txt_ file.
 
-3. Training data file: *_drugcell_train.txt_*
+3. Training data file: **_drugcell_train.txt_**
     * A tab-delimited file containing all data points that you want to use to train the model.
         The 1st column is identification of cells (genotypes), the 2nd column is identification of
         drugs and the 3rd column is an observed drug response in a floating number.
 
-4. Validation data file: _drugcell_val.txt_
+4. Validation data file: **_drugcell_val.txt_**
     * A tab-delimited file that in the same format as the training data.
 
-5. Test data file: _drugcell_test.txt_
+5. Test data file: **_drugcell_test.txt_**
     * A tab-delimited file containing all data points that you want to estimate drug response for. A tab-delimited file that in the same format as the training data.
 
-6. Ontology (hierarchy) file: *_drugcell_ont.txt_* () OR *_sparsego_ont.txt_*
+6. Ontology (hierarchy) file: **_drugcell_ont.txt_** () OR **_sparsego_ont.txt_**
         * A tab-delimited file that contains the ontology (hierarchy) that defines the structure of a branch
         of the model that encodes the genotypes. The first column is always a term (subsystem or pathway) or a gene,
         and the second column is another term or a gene.
