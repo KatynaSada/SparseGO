@@ -178,7 +178,6 @@ Required input files:
            GO:0043552	PIK3R4	gene
            GO:0043552	SRC	gene
            GO:0043552	FLT1	gene
-
           ```
 
         * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutations model.
