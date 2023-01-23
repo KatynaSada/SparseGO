@@ -68,11 +68,15 @@ This tutorial includes:
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-*   <a href="https://github.com/KatynaSada/SparseGO_code">
-    <img src="images/python.png" width="100" alt="Logo" >
-  </a>
-* [![Pytorch][Pytorch-image]][Pytorch-url]
-* [![GeneOntology][GO-image]][GO-url]
+*   <a href="https://www.python.org/">
+      <img src="images/python.png" width="100" alt="python" >
+    </a>
+*   <a href="https://pytorch.org/">
+      <img src="images/pytorch.png" width="100" alt="pytorch" >
+    </a>
+*   <a href="http://geneontology.org/">
+      <img src="images/geneontology.png" width="100" alt="geneontology" >
+    </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,9 +180,3 @@ Use this space to list resources you find helpful and would like to give credit 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[Python-image]: images/python.png
-[Python-url]: https://www.python.org/
-[Pytorch-image]: images/pytorch.png
-[Pytorch-url]: https://pytorch.org/
-[GO-image]: images/geneontology.png
-[GO-url]: http://geneontology.org/
