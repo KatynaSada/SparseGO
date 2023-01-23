@@ -80,7 +80,7 @@ This project includes instructions for:
 # Getting Started
 
 ```diff
-- hola 
+- The original <a href="https://pubmed.ncbi.nlm.nih.gov/33096023/">DrugCell<a> repository served as the basis for these instructions. I'd like to take this chance to thank the <a href="https://github.com/idekerlab">Trey Ideker Lab<a> at UCSD!
 ```
 
 ## Prerequisites
@@ -89,29 +89,20 @@ This project includes instructions for:
 SparseGO training/testing scripts require the following environmental setup:
 
 * Hardware required for training a new model
-    * GPU server with CUDA>=11 installed
+    * GPU server with CUDA>=12 installed
 
 * Software
-    * Python 2.7 or >=3.6
+    * Python >=3.8
     * Anaconda
         * Relevant information for installing Anaconda can be found in: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
-    * PyTorch >=0.4
+    * PyTorch >=1.10 and PyTorch Sparse
         * Depending on the specification of your machine, run appropriate command to install PyTorch.
-        The installation command line can be found in https://pytorch.org/. Specify **Conda** as your default package.
-        * Example 1: if you are working with a **CPU machine** running on **MAC OS X**, execute the following command line:
+        The installation command line can be found in https://pytorch.org/get-started/locally/.
+        * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.0, simply run
         ```angular2
-        conda install pytorch torchvision -c pytorch
+        pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+${CUDA}.html
         ```
-        * Example 2: for a **LINUX machine without GPUs**, run the following command line:
-        ```
-        conda install pytorch torchvision cpuonly -c pytorch
-        ```
-        * Example 3: for a **LINUX-based GPU server** with **CUDA version 10.1**, run the following command line:
-        ```angular2
-        conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
-        ```
-     * networkx
-     * numpy
+        where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
 
 * Set up a virtual environment
     * If you are testing the pre-trained model using a CPU machine, run the following command line to set up an
