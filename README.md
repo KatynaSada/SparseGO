@@ -104,12 +104,12 @@ SparseGO training/testing scripts require the following environmental setup:
         ```
         where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
     * Weights & Biases · MLOps platform
-      *1.* Create wandb free account at <a href="https://wandb.ai/site">https://wandb.ai/site<a>
-      *2.*  Install the wandb library on your machine in a Python 3 environment
+      **1.** Create wandb free account at <a href="https://wandb.ai/site">https://wandb.ai/site<a>
+      **2.**  Install the wandb library on your machine in a Python 3 environment
       ```angular2
       pip install wandb
       ```
-      *3.* Login to the wandb library on your machine. You will find your API key here: <a href="https://wandb.ai/authorize.">https://wandb.ai/authorize.<a>
+      **3.** Login to the wandb library on your machine. You will find your API key here: <a href="https://wandb.ai/authorize.">https://wandb.ai/authorize.<a>
       ```angular2
       wandb login APIKEY
       ```
