@@ -168,7 +168,6 @@ Required input files:
           The third column should be set to "default" when the line represents a link between terms, and
           "gene" when the line represents an annotation link between a term and a gene.
           The following is an example describing a sample hierarchy.
-
           <img src="https://github.com/idekerlab/DrugCell/blob/master/misc/drugcell_ont_image_sample.png" width="200" alt="python" >
 
           ```angular2
