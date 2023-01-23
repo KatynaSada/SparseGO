@@ -1,6 +1,5 @@
 #!/bin/bash
-#inputdir="../data/data_expression_lincs1000/" # CHANGE THIS
-inputdir="../data/cross_validation/samples1/"
+inputdir="../data/toy_example/samples1/"
 type="" # CHANGE THIS
 
 gene2idfile=$inputdir"gene2ind"$type".txt"
@@ -15,9 +14,7 @@ ontfile=$inputdir"drugcell_ont.txt" # CHANGE THIS
 mutationfile=$inputdir"cell2mutation"$type".txt" # CHANGE THIS
 #mutationfile=$inputdir"cell2expression"$type".txt"
 
-directory="../results/DrugCell_sample1" # CHANGE THIS
-
-
+directory="../results/toy_example/samples1/" # CHANGE THIS
 
 modelfile=$directory"/best_model_p.pt"
 resultdir=$directory
@@ -32,4 +29,4 @@ fi
 source activate  C:/Users/ksada/Anaconda3/envs/SparseGO
 
 
-python -u ../code/predict_gpu.py -gene2id $gene2idfile -cell2id $cell2idfile -drug2id $drug2idfile -genotype $mutationfile -fingerprint $drugfile -result $resultdir -predict $testdatafile -load $modelfile -cuda $cudaid > $directory/ValCorrelation.log
+python -u ../code/predict_gpu.py -gene2id $gene2idfile -cell2id $cell2idfile -drug2id $drug2idfile -genotype $mutationfile -fingerprint $drugfile -result $resultdir -predict $testdatafile -load $modelfile -cuda $cudaid > $directory/test_correlation.log

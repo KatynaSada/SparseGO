@@ -1,5 +1,5 @@
 """
-    This script makes predictions using a pre-trained SparseGO network. 
+    This script makes predictions using a pre-trained SparseGO network.
 """
 
 import sys
@@ -23,10 +23,6 @@ def predict(predict_data, gene_dim, drug_dim, model_file, batch_size, result_fil
     model = torch.load(model_file, map_location='cuda:%d' % CUDA_ID)
 
     predict_feature, predict_label = predict_data
-
-    # !! Modify output/labels to make small AUCs important
-    predict_label = torch.log(predict_label+10e-4)
-    # predict_label = 1/(predict_label+10e-2)
 
     predict_label_gpu = predict_label.cuda(CUDA_ID)
 
@@ -57,13 +53,8 @@ def predict(predict_data, gene_dim, drug_dim, model_file, batch_size, result_fil
 
     np.savetxt(result_file+'test_predictions.txt', test_predict.cpu().detach().numpy(),'%.5e')
 
-# inputdir="../data/cross_validation_expression/samples1/" # CHANGE
-# outputdir="../results/weights&biases/Expression_logAUC/samples1"
-
-# mutation = "cell2expression.txt"
-
-inputdir="../data/toy_example/" # CHANGE
-outputdir="../results/prueba_spyder_wb/"
+inputdir="../data/toy_example/samples1/" # CHANGE
+outputdir="../results/toy_example/samples1/"
 
 mutation = "cell2mutation.txt"
 

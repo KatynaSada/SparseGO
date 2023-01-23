@@ -1,3 +1,7 @@
+"""
+    This script trains a SparseGO network and makes predictions using the trained network.
+"""
+
 import sys
 import os
 import pandas as pd
@@ -100,7 +104,7 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
                   features = build_input_vector(inputdata, cell_features, drug_features)
 
                   cuda_features = torch.autograd.Variable(features.cuda(cuda_id))
-                  cuda_labels = torch.autograd.Variable(labels.cuda(cuda_id))
+                  #cuda_labels = torch.autograd.Variable(labels.cuda(cuda_id))
 
                   # Forward pass & statistics
                   out = model(cuda_features)
@@ -209,7 +213,7 @@ def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file
             features = build_input_vector(inputdata, cell_features, drug_features)
 
             cuda_features = Variable(features.cuda(CUDA_ID), requires_grad=False)
-            cuda_labels = torch.autograd.Variable(labels.cuda(CUDA_ID))
+            #cuda_labels = torch.autograd.Variable(labels.cuda(CUDA_ID))
 
             # make prediction for test data
             out = model(cuda_features)
@@ -430,7 +434,7 @@ def pipeline():
     model.to(device)
 
     if config.optimizer=='sgd':
-        momentum=config.momentum 
+        momentum=config.momentum
         print("Momentum: ", momentum)
         optimizer = torch.optim.SGD(model.parameters(), lr=config.learning_rate, momentum=momentum)
     elif config.optimizer=='adam':

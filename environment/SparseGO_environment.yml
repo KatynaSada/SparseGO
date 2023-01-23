@@ -311,4 +311,3 @@ dependencies:
     - werkzeug==2.1.2
     - widgetsnbextension==3.6.0
     - wsproto==1.2.0
-prefix: C:\Users\ksada\Anaconda3\envs\SparseGO
