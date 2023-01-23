@@ -132,37 +132,37 @@ SparseGO training/testing scripts require the following environmental setup:
 ## Required input files
 Required input files:
 1. Cell feature files:
-    * **_gene2ind.txt_**: Gene to ID mapping file
-    * **_cell2ind.txt_**: Cell to ID mapping file, a tab-delimited file where the 1st column is index of cells and the 2nd column is the name of cells (genotypes).
+  * **_gene2ind.txt_**: Gene to ID mapping file
+  * **_cell2ind.txt_**: Cell to ID mapping file, a tab-delimited file where the 1st column is index of cells and the 2nd column is the name of cells (genotypes).
     The column index of each gene should match with those in _gene2ind.txt_ file. The line number should
     match with the indices of cells in _cell2ind.txt_ file.
 
-    * **_cell2mutation.txt_** OR **_cell2expression.txt_**: choose the file depending on whether you want to train with mutations or with expression
-      * _cell2mutation.txt_: a comma-delimited file where each row has 3,008 binary values indicating each gene is mutated (1) or not (0).
+  * **_cell2mutation.txt_** OR **_cell2expression.txt_**: choose the file depending on whether you want to train with mutations or with expression
+    * _cell2mutation.txt_: a comma-delimited file where each row has 3,008 binary values indicating each gene is mutated (1) or not (0).
       OR
-      * _cell2expression.txt_: a comma-delimited file where each row has 15014 values indicating the expression of 15014 genes.
-        * The script to download the expression data and create the file is provided in _extra_ folder (_get_expression_matrix.R_). It requires the _cell2ind.txt_ file.
+    * _cell2expression.txt_: a comma-delimited file where each row has 15014 values indicating the expression of 15014 genes.
+      * The script to download the expression data and create the file is provided in _extra_ folder (_get_expression_matrix.R_). It requires the _cell2ind.txt_ file.
 2. Drug feature files:
-    * **_drug2ind.txt_**: a tab-delimited file where the 1st column is index of drug and the 2nd column is
+  * **_drug2ind.txt_**: a tab-delimited file where the 1st column is index of drug and the 2nd column is
     identification of each drug (e.g., SMILES representation or name). The identification of drugs
     should match to those in _drug2fingerprint.txt_ file.
-    * **_drug2fingerprint.txt_**: a comma-delimited file where each row has 2,048 binary values which would form
+  * **_drug2fingerprint.txt_**: a comma-delimited file where each row has 2,048 binary values which would form
     , when combined, a Morgan Fingerprint representation of each drug.
     The line number should match with the indices of drugs in _drug2ind.txt_ file.
 
 3. Training data file: **_drugcell_train.txt_**
-    * A tab-delimited file containing all data points that you want to use to train the model.
+  * A tab-delimited file containing all data points that you want to use to train the model.
         The 1st column is identification of cells (genotypes), the 2nd column is identification of
         drugs and the 3rd column is an observed drug response in a floating number.
 
 4. Validation data file: **_drugcell_val.txt_**
-    * A tab-delimited file that in the same format as the training data.
+  * A tab-delimited file that in the same format as the training data.
 
 5. Test data file: **_drugcell_test.txt_**
-    * A tab-delimited file containing all data points that you want to estimate drug response for. A tab-delimited file that in the same format as the training data.
+  * A tab-delimited file containing all data points that you want to estimate drug response for. A tab-delimited file that in the same format as the training data.
 
-6. Ontology (hierarchy) file: **_drugcell_ont.txt_** () OR **_sparsego_ont.txt_**
-        * A tab-delimited file that contains the ontology (hierarchy) that defines the structure of a branch
+6. Ontology (hierarchy) file: **_drugcell_ont.txt_** OR **_sparsego_ont.txt_**
+  * A tab-delimited file that contains the ontology (hierarchy) that defines the structure of a branch
         of the model that encodes the genotypes. The first column is always a term (subsystem or pathway) or a gene,
         and the second column is another term or a gene.
         The third column should be set to "default" when the line represents a link between terms, and
@@ -181,8 +181,8 @@ Required input files:
          GO:0043552	FLT1	gene       
         ```
 
-         * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutations model.
-         * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
+        * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutations model.
+        * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
          * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
 
 <!-- CONTRIBUTING -->
