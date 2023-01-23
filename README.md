@@ -169,9 +169,9 @@ Required input files:
           "gene" when the line represents an annotation link between a term and a gene.
           The following is an example describing a sample hierarchy.
 
-          ![][https://github.com/idekerlab/DrugCell/blob/master/misc/drugcell_ont_image_sample.png]
+          <img src="https://github.com/idekerlab/DrugCell/blob/master/misc/drugcell_ont_image_sample.png" width="200" alt="python" >
 
-          ```
+          ```angular2
            GO:0045834	GO:0045923	default
            GO:0045834	GO:0043552	default
            GO:0045923	AKT2	gene
