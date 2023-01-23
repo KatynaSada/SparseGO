@@ -47,7 +47,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+# About The Project
 
  <p align="center"><img src="images/network.png" width="700" alt="Logo"></p>
 
@@ -77,18 +77,63 @@ This project includes instructions for:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-## Getting Started
+# Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+```diff
+- hola 
+```
 
-### Prerequisites
+## Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+# Environment set up for training and testing of SparseGO
+SparseGO training/testing scripts require the following environmental setup:
+
+* Hardware required for training a new model
+    * GPU server with CUDA>=11 installed
+
+* Software
+    * Python 2.7 or >=3.6
+    * Anaconda
+        * Relevant information for installing Anaconda can be found in: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
+    * PyTorch >=0.4
+        * Depending on the specification of your machine, run appropriate command to install PyTorch.
+        The installation command line can be found in https://pytorch.org/. Specify **Conda** as your default package.
+        * Example 1: if you are working with a **CPU machine** running on **MAC OS X**, execute the following command line:
+        ```angular2
+        conda install pytorch torchvision -c pytorch
+        ```
+        * Example 2: for a **LINUX machine without GPUs**, run the following command line:
+        ```
+        conda install pytorch torchvision cpuonly -c pytorch
+        ```
+        * Example 3: for a **LINUX-based GPU server** with **CUDA version 10.1**, run the following command line:
+        ```angular2
+        conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+        ```
+     * networkx
+     * numpy
+
+* Set up a virtual environment
+    * If you are testing the pre-trained model using a CPU machine, run the following command line to set up an
+    appropriate virtual environment (pytorch3drugcellcpu) using the .yml files in _environment_setup_.
+        * MAC OS X
+        ```angular2
+        conda env create -f environment_cpu_mac.yml
+        ```
+        * LINUX
+        ```angular2
+        conda env create -f environment_cpu_linux.yml
+        ```
+    * If you are training a new model or test the pre-trained model using a GPU server, run the following command line
+    to set up a virtual environment (pytorch3drugcell).
+        ```angular2
+         conda env create -f environment.yml
+        ```
+    * After setting up the conda virtual environment, make sure to activate environment before executing DrugCell scripts.
+    When testing in _sample_ directory, no need to run this as the example bash scripts already have the command line.
+        ```
+        source activate pytorch3drugcell (or pytorch3drugcellcpu)
+        ```
 
 ### Installation
 
