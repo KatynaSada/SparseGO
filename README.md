@@ -169,7 +169,6 @@ Required input files:
           "gene" when the line represents an annotation link between a term and a gene.
           The following is an example describing a sample hierarchy.
           ![](https://github.com/idekerlab/DrugCell/blob/master/misc/drugcell_ont_image_sample.png)
-
           ```angular2
            GO:0045834	GO:0045923	default
            GO:0045834	GO:0043552	default
@@ -179,7 +178,6 @@ Required input files:
            GO:0043552	SRC	gene
            GO:0043552	FLT1	gene       
           ```
-
           * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutations model.
           * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
            * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
