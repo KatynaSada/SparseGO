@@ -39,7 +39,6 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -55,27 +54,24 @@
 
 Artificial intelligence (AI), and specifically Deep Neural Networks (DNNs), have been successfully applied to predict drug efficacy in cancer cell lines. However, understanding how the recommendation is carried out, is still a challenge when using DNNs. An algorithm called <a href="https://pubmed.ncbi.nlm.nih.gov/33096023/">DrugCell<a> showed that by simulating the Gene Ontology structure with a DNN, each neuron in the network can be assigned an interpretation. Here we present SparseGO, a sparse explainable neural network that extends this approach in two different ways: first, by optimizing the algorithm using sparse DNNs to accommodate any type of omics data as input, and second, by fusing an eXplainable Artificial Intelligence (XAI) technique with another machine learning algorithm to systematically predict the mechanism of action (MoA) of drugs.  
 
-This tutorial includes:
-* predict using a trained SparseGO network
-* train the network.
-* DeepMoA method
+This project includes instructions for:
+* making predictions using a trained SparseGO network,
+* training a SparseGO network,
+* and using the DeepMoA method to predict the MoA of drugs.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 *   <a href="https://www.python.org/">
-      <img src="images/python.png" width="100" alt="python" >
+      <img src="images/python.png" width="110" alt="python" >
     </a>
 *   <a href="https://pytorch.org/">
-      <img src="images/pytorch.png" width="100" alt="pytorch" >
+      <img src="images/pytorch.png" width="105" alt="pytorch" >
     </a>
 *   <a href="http://geneontology.org/">
-      <img src="images/geneontology.png" width="100" alt="geneontology" >
+      <img src="images/geneontology.png" width="105" alt="geneontology" >
     </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -147,9 +143,9 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an <a href="https://github.com/KatynaSada/SparseGO_code/issues">issue</a> with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
@@ -168,12 +164,9 @@ Katyna Sada - ksada@unav.es - ksada@tecnun.es
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
+* [DrugCell](https://github.com/idekerlab/DrugCell)
 * [Weights & Biases](https://www.wandb.ai/)
 * [Sparse Linear](https://github.com/hyeon95y/SparseLinear)
 
