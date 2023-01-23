@@ -86,11 +86,9 @@ This project includes instructions for:
 * <a href="https://github.com/idekerlab">Trey Ideker Lab<a>
 
 ## Prerequisites
-
-# Environment set up for training and testing of SparseGO
 SparseGO training/testing scripts require the following environmental setup:
 
-* Hardware required for training a new model
+* Hardware
     * GPU server with CUDA>=12 installed
 
 * Software
@@ -105,78 +103,85 @@ SparseGO training/testing scripts require the following environmental setup:
         pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+${CUDA}.html
         ```
         where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
+    * Weights & Biases · MLOps platform
+      1. Create wandb free account at <a href="https://wandb.ai/site">https://wandb.ai/site<a>
+      2.  Install the wandb library on your machine in a Python 3 environment
+      ```angular2
+      pip install wandb
+      ```
+      3. Login to the wandb library on your machine. You will find your API key here: <a href="https://wandb.ai/authorize.">https://wandb.ai/authorize.<a>
+      ```angular2
+      wandb login APIKEY
+      ```
+      where ```APIKEY``` should be replaced by your API key.
 
-* Set up a virtual environment
-    * If you are testing the pre-trained model using a CPU machine, run the following command line to set up an
-    appropriate virtual environment (pytorch3drugcellcpu) using the .yml files in _environment_setup_.
-        * MAC OS X
+## Environment set up for training and testing of SparseGO
+    * Run the following command line inside the environment folder to set up a virtual environment (SparseGO).
         ```angular2
-        conda env create -f environment_cpu_mac.yml
+         conda env create -f SparseGO_environment.yml
         ```
-        * LINUX
+    * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
+    When training or testing using the bash scripts provided (_train_wb.sh_ or _test.sh_), there's no need to run this as the example bash scripts already have the command line.
         ```angular2
-        conda env create -f environment_cpu_linux.yml
-        ```
-    * If you are training a new model or test the pre-trained model using a GPU server, run the following command line
-    to set up a virtual environment (pytorch3drugcell).
-        ```angular2
-         conda env create -f environment.yml
-        ```
-    * After setting up the conda virtual environment, make sure to activate environment before executing DrugCell scripts.
-    When testing in _sample_ directory, no need to run this as the example bash scripts already have the command line.
-        ```
-        source activate pytorch3drugcell (or pytorch3drugcellcpu)
+        source activate SparseGO
         ```
 
-### Installation
+# Training and testing SparseGO
+## Required input files
+Required input files:
+1. Cell feature files:
+    * *_gene2ind.txt_*: Gene to ID mapping file
+    * *_cell2ind.txt_*: Cell to ID mapping file, a tab-delimited file where the 1st column is index of cells and the 2nd column is the name of cells (genotypes).
+    The column index of each gene should match with those in _gene2ind.txt_ file. The line number should
+    match with the indices of cells in _cell2ind.txt_ file.
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+    * *_cell2mutation.txt_* OR *_cell2expression.txt_*: choose the file depending on whether you want to train with mutations or with expression
+      * _cell2mutation.txt_: a comma-delimited file where each row has 3,008 binary values indicating each gene is mutated (1) or not (0).
+      OR
+      * _cell2expression.txt_: a comma-delimited file where each row has 15014 values indicating the expression of 15014 genes.
+        * The script to download the expression data and create the file is provided in _extra_ folder (_get_expression_matrix.R_). It requires the _cell2ind.txt_ file.
+2. Drug feature files:
+    * *_drug2ind.txt_*: a tab-delimited file where the 1st column is index of drug and the 2nd column is
+    identification of each drug (e.g., SMILES representation or name). The identification of drugs
+    should match to those in _drug2fingerprint.txt_ file.
+    * *_drug2fingerprint.txt_*: a comma-delimited file where each row has 2,048 binary values which would form
+    , when combined, a Morgan Fingerprint representation of each drug.
+    The line number should match with the indices of drugs in _drug2ind.txt_ file.
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+3. Training data file: *_drugcell_train.txt_*
+    * A tab-delimited file containing all data points that you want to use to train the model.
+        The 1st column is identification of cells (genotypes), the 2nd column is identification of
+        drugs and the 3rd column is an observed drug response in a floating number.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+4. Validation data file: _drugcell_val.txt_
+    * A tab-delimited file that in the same format as the training data.
 
+5. Test data file: _drugcell_test.txt_
+    * A tab-delimited file containing all data points that you want to estimate drug response for. A tab-delimited file that in the same format as the training data.
 
+6. Ontology (hierarchy) file: *_drugcell_ont.txt_* () OR *_sparsego_ont.txt_*
+        * A tab-delimited file that contains the ontology (hierarchy) that defines the structure of a branch
+        of the model that encodes the genotypes. The first column is always a term (subsystem or pathway) or a gene,
+        and the second column is another term or a gene.
+        The third column should be set to "default" when the line represents a link between terms, and
+        "gene" when the line represents an annotation link between a term and a gene.
+        The following is an example describing a sample hierarchy.
 
-<!-- USAGE EXAMPLES -->
-## Usage
+            ![](https://github.com/idekerlab/DrugCell/blob/master/misc/drugcell_ont_image_sample.png)
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+        ```
+         GO:0045834	GO:0045923	default
+         GO:0045834	GO:0043552	default
+         GO:0045923	AKT2	gene
+         GO:0045923	IL1B	gene
+         GO:0043552	PIK3R4	gene
+         GO:0043552	SRC	gene
+         GO:0043552	FLT1	gene       
+        ```
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+         * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutations model.
+         * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
+         * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files. 
 
 <!-- CONTRIBUTING -->
 ## Contributing
