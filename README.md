@@ -233,7 +233,7 @@ There are a few optional parameters that you can provide in addition to the inpu
 13. **-gpu_name**: not important, just a reminder of which GPU you used (type=str).
 
 ## Testing
-hola
+sss
 
 ### Parameters for predicting
 
