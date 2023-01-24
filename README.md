@@ -183,7 +183,7 @@ Required input files:
           "gene" when the line represents an annotation link between a term and a gene.
           The following is an example describing a sample hierarchy.
           ![](https://github.com/idekerlab/DrugCell/blob/master/misc/drugcell_ont_image_sample.png)
-          ```
+          ```angular2
 
            GO:0045834	GO:0045923	default
            GO:0045834	GO:0043552	default
@@ -240,7 +240,7 @@ There are a few optional parameters that you can provide in addition to the inpu
 2. Login to wandb account
 3. Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
 
-```
+```angular2
 python -u "code/train_gpu_wb.py"  -onto data/toy_example/samples1/drugcell_ont.txt
                                   -gene2id data/toy_example/samples1/gene2ind.txt
                                   -drug2id data/toy_example/samples1/drug2ind.txt
