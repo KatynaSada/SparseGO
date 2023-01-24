@@ -5,7 +5,7 @@ cudaid=0 # cuda id
 epoch=100
 drug_neurons='100,50,6'
 # These parameters can also be tunned in train_gpu_wb.py using Weights & Biases (W&B) -----
-batch=15000
+batch=5000
 lr=0.1
 decay_rate=0.001
 number_neurons_per_GO=6
@@ -17,6 +17,7 @@ projectname="SparseGO_toy_example" # CHANGE THIS - name you want to give to your
 
 gpu_name="RTX_A4000" # CHANGE THIS - not important, just a reminder of which gpu you used.
 
+# The loop was created to facilitate cross-validation, more than 1 folder can be provided to create different models using different samples for training and testing
 for samples in "samples1"  # CHANGE THIS - folder(s) where you have the data
 do
   inputdir="../data/toy_example/"$samples"/" # CHANGE THIS - folder where you have the folder(s) of data
@@ -43,7 +44,7 @@ do
   #WINDOWS
   source activate  C:/Users/ksada/Anaconda3/envs/SparseGO # CHANGE THIS - your environment
   wandb login b1f6d1cea53bb6557df3c1c0c0530b53cadeed3d # CHANGE THIS - your W&B account
-  python -u "C:/Users/ksada/OneDrive - Tecnun/SparseGO_code/code/train_gpu_wb.py" -onto $ontfile -gene2id $gene2idfile -drug2id $drug2idfile -cell2id $cell2idfile -train $traindatafile -test $valdatafile -modeldir $modeldir -cuda $cudaid -genotype $mutationfile -fingerprint $drugfile -number_neurons_per_GO $number_neurons_per_GO -number_neurons_per_final_GO $number_neurons_per_final_GO -drug_neurons $drug_neurons -final_neurons $final_neurons -epoch $epoch -batchsize $batch -lr $lr -decay_rate $decay_rate -predict $testdatafile -result $modeldir -project $projectname -gpu_name $gpu_name  > $modeldir"train_correlation.log"
+  python -u "C:/Users/ksada/OneDrive - Tecnun/SparseGO_code/code/train_gpu_wb.py" -onto $ontfile -gene2id $gene2idfile -drug2id $drug2idfile -cell2id $cell2idfile -train $traindatafile -val $valdatafile -modeldir $modeldir -cuda $cudaid -genotype $mutationfile -fingerprint $drugfile -number_neurons_per_GO $number_neurons_per_GO -number_neurons_per_final_GO $number_neurons_per_final_GO -drug_neurons $drug_neurons -final_neurons $final_neurons -epoch $epoch -batchsize $batch -lr $lr -decay_rate $decay_rate -predict $testdatafile -result $modeldir -project $projectname -gpu_name $gpu_name  > $modeldir"train_correlation.log"
 
 done
 

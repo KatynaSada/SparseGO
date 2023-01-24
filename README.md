@@ -202,6 +202,9 @@ Required input files:
 
 ## Training
 
+The code used to train the model (<a href="https://github.com/KatynaSada/SparseGO_code/blob/main/code/train_gpu_wb.py">_code/train_gpu_wb.py_<a>) also uses the top-performing model to predict using the test data. Three files containing train, validation, and test data (cell line-drug pairs-AUC) must be provided.
+
+
 ### Parameters for training
 
 There are a few optional parameters that you can provide in addition to the input files:
@@ -222,7 +225,7 @@ There are a few optional parameters that you can provide in addition to the inpu
 
   8. **-Mapping for the number of neurons in the root term**: Mapping for the number of neurons in each term in genotype parts (type=int).
 
-  9. **-drug_neurons**: Mapping for the number of neurons in each layer (type=int).
+  9. **-drug_neurons**: Mapping for the number of neurons in each layer (type=str).
 
   10. **-final_neurons**: Number of neurons before the output and after concatenating (type=int).
 
@@ -231,6 +234,37 @@ There are a few optional parameters that you can provide in addition to the inpu
   12. **-project**: wandb project name that you want to use (type=str).
 
   13. **-gpu_name**: not important, just a reminder of which GPU you used (type=str).
+
+### Running the training code
+1. Activate SparseGO environment
+2. Login to wandb account
+3. Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
+
+```
+python -u "code/train_gpu_wb.py"  -onto data/toy_example/samples1/drugcell_ont.txt
+                                  -gene2id data/toy_example/samples1/gene2ind.txt
+                                  -drug2id data/toy_example/samples1/drug2ind.txt
+                                  -cell2id data/toy_example/samples1/cell2ind.txt
+                                  -train data/toy_example/samples1/drugcell_train.txt
+                                  -val data/toy_example/samples1/drugcell_val.txt
+                                  -modeldir $modeldir
+                                  -cuda 0
+                                  -genotype data/toy_example/samples1/cell2mutation.txt
+                                  -fingerprint data/toy_example/samples1/drug2fingerprint.txt
+                                  -number_neurons_per_GO 6
+                                  -number_neurons_per_final_GO 6
+                                  -drug_neurons '100,50,6'
+                                  -final_neurons 6
+                                  -epoch 100
+                                  -batchsize 5000
+                                  -lr 0.1
+                                  -decay_rate 0.001
+                                  -predict data/toy_example/samples1/drugcell_test.txt
+                                  -result results/toy_example/samples1/
+                                  -project SparseGO_toy_example
+                                  -gpu_name my_GPU  > results/toy_example/samples1/train_correlation.log
+
+```
 
 ## Testing
 sss
