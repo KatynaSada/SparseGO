@@ -41,6 +41,9 @@
       <ul>
         <li><a href="#Required-input-files">Required input files</a></li>
         <li><a href="#Training">Training</a></li>
+        <ul>
+          <li><a href="#Parameters">Parameters</a></li>
+        </ul>
         <li><a href="#Testing">Testing</a></li>
       </ul>
     </li>
@@ -195,6 +198,8 @@ Required input files:
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 ## Training
+
+### Parameters
 hola
 
 ## Testing
@@ -234,6 +239,6 @@ Katyna Sada - ksada@unav.es - ksada@tecnun.es
 * [Weights & Biases](https://www.wandb.ai/)
 * [Sparse Linear](https://github.com/hyeon95y/SparseLinear)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
