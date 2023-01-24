@@ -206,31 +206,31 @@ Required input files:
 
 There are a few optional parameters that you can provide in addition to the input files:
 
-1. **-epoch**: the number of epoch to run during the training phase (type=int).
+  1. **-epoch**: the number of epoch to run during the training phase (type=int).
 
-2. **-lr**: the learning rate (type=float).
+  2. **-lr**: the learning rate (type=float).
 
-3. **-decay_rate**: the learning decay rate (type=float).
+  3. **-decay_rate**: the learning decay rate (type=float).
 
-4. **-batchsize**: the number of training examples in one forward/backward pass. The higher the batch size, the more memory space you'll need (type=int).
+  4. **-batchsize**: the number of training examples in one forward/backward pass. The higher the batch size, the more memory space you'll need (type=int).
 
-5. **-modeldir**: folder to store trained models (type=str).
+  5. **-modeldir**: folder to store trained models (type=str).
 
-6. **-cuda_id**: GPU ID (type=int).
+  6. **-cuda_id**: GPU ID (type=int).
 
-7. **-number_neurons_per_GO**: Mapping for the number of neurons in each term in genotype parts (type=int).
+  7. **-number_neurons_per_GO**: Mapping for the number of neurons in each term in genotype parts (type=int).
 
-8. **-Mapping for the number of neurons in the root term**: Mapping for the number of neurons in each term in genotype parts (type=int).
+  8. **-Mapping for the number of neurons in the root term**: Mapping for the number of neurons in each term in genotype parts (type=int).
 
-9. **-drug_neurons**: Mapping for the number of neurons in each layer (type=int).
+  9. **-drug_neurons**: Mapping for the number of neurons in each layer (type=int).
 
-10. **-final_neurons**: Number of neurons before the output and after concatenating (type=int).
+  10. **-final_neurons**: Number of neurons before the output and after concatenating (type=int).
 
-11. **-result**: folder to store the results of the predictions of test (type=str).
+  11. **-result**: folder to store the results of the predictions of test (type=str).
 
-12. **-project**: wandb project name that you want to use (type=str).
+  12. **-project**: wandb project name that you want to use (type=str).
 
-13. **-gpu_name**: not important, just a reminder of which GPU you used (type=str).
+  13. **-gpu_name**: not important, just a reminder of which GPU you used (type=str).
 
 ## Testing
 sss
