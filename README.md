@@ -36,6 +36,14 @@
         <li><a href="#Environment-set-up-for-training-and-testing-of-SparseGO">Environment set up</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#Training-and-testing-SparseGO">Training and testing SparseGO</a>
+      <ul>
+        <li><a href="#Required-input-files">Required input files</a></li>
+        <li><a href="#Training">Training</a></li>
+        <li><a href="#Testing">Testing</a></li>
+      </ul>
+    </li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -184,6 +192,10 @@ Required input files:
           * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Training
+
+## Testing 
+
 
 <!-- CONTRIBUTING -->
 # Contributing
