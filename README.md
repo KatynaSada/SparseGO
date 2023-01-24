@@ -33,11 +33,9 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#Environment set up for training and testing of SparseGO">Environment set up</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -127,6 +125,7 @@ SparseGO training/testing scripts require the following environmental setup:
   ```angular2
   source activate SparseGO
   ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Training and testing SparseGO
 ## Required input files
@@ -184,8 +183,10 @@ Required input files:
         * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
           * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- CONTRIBUTING -->
-## Contributing
+# Contributing
 
 Any contributions you make are **greatly appreciated**.
 
@@ -201,7 +202,7 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
-## Contact
+# Contact
 
 Katyna Sada - ksada@unav.es - ksada@tecnun.es
 
@@ -209,7 +210,7 @@ Katyna Sada - ksada@unav.es - ksada@tecnun.es
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+# Acknowledgments
 * [DrugCell](https://github.com/idekerlab/DrugCell)
 * [Weights & Biases](https://www.wandb.ai/)
 * [Sparse Linear](https://github.com/hyeon95y/SparseLinear)
