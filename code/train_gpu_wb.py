@@ -250,7 +250,7 @@ parser.add_argument('-onto', help='Ontology file used to create the neural netwo
 parser.add_argument('-train', help='Training dataset', type=str, default=inputdir+"drugcell_train.txt")
 parser.add_argument('-val', help='Validation dataset', type=str, default=inputdir+"drugcell_val.txt")
 parser.add_argument('-epoch', help='Training epochs for training', type=int, default=20)
-parser.add_argument('-lr', help='Learning rate', type=float, default=0.3)
+parser.add_argument('-lr', help='Learning rate', type=float, default=0.1)
 parser.add_argument('-decay_rate', help='Learning rate decay', type=float, default=0.001)
 parser.add_argument('-batchsize', help='Batchsize', type=int, default=100)
 parser.add_argument('-modeldir', help='Folder for trained models', type=str, default=modeldir)
@@ -260,9 +260,9 @@ parser.add_argument('-drug2id', help='Drug to ID mapping file', type=str, defaul
 parser.add_argument('-cell2id', help='Cell to ID mapping file', type=str, default=inputdir+"cell2ind.txt")
 
 parser.add_argument('-number_neurons_per_GO', help='Mapping for the number of neurons in each term in genotype parts', type=int, default=6)
-parser.add_argument('-number_neurons_per_final_GO', help='Mapping for the number of neurons in the root term', type=int, default=30)
-parser.add_argument('-drug_neurons', help='Mapping for the number of neurons in each layer', type=str, default='200,100,15')
-parser.add_argument('-final_neurons', help='The number of neurons before the output and after concatenating', type=int, default=20)
+parser.add_argument('-number_neurons_per_final_GO', help='Mapping for the number of neurons in the root term', type=int, default=6)
+parser.add_argument('-drug_neurons', help='Mapping for the number of neurons in each layer', type=str, default='100,50,6')
+parser.add_argument('-final_neurons', help='The number of neurons before the output and after concatenating', type=int, default=6)
 
 parser.add_argument('-genotype', help='Mutation information for cell lines', type=str, default=inputdir+mutation)
 parser.add_argument('-fingerprint', help='Morgan fingerprint representation for drugs', type=str, default=inputdir+"drug2fingerprint.txt")
@@ -270,7 +270,7 @@ parser.add_argument('-fingerprint', help='Morgan fingerprint representation for 
 parser.add_argument('-predict', help='Dataset to be predicted', type=str, default=inputdir+"drugcell_test.txt")
 parser.add_argument('-result', help='Result file name', type=str, default=modeldir)
 
-parser.add_argument('-project', help='Project name', type=str, default="prueba")
+parser.add_argument('-project', help='Project name', type=str, default="Test")
 parser.add_argument('-gpu_name', help='GPU type', type=str, default="'RTX_A4000'")
 
 
