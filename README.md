@@ -43,10 +43,12 @@
         <li><a href="#Training">Training</a></li>
         <ul>
           <li><a href="#Parameters-for-training">Parameters</a></li>
+          <li><a href="#Running-the-training-code">Run the code</a></li>
         </ul>
         <li><a href="#Testing">Testing</a></li>
         <ul>
           <li><a href="#Parameters-for-predicting">Parameters</a></li>
+          <li><a href="#Running-the-prediction-code">Run the code</a></li>
         </ul>
       </ul>
     </li>
@@ -271,9 +273,10 @@ python -u code/train_gpu_wb.py    -onto data/toy_example/samples1/drugcell_ont.t
 ```
 
 ## Testing
-sss
 
 ### Parameters for predicting
+
+### Running the training code
 
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
