@@ -209,7 +209,7 @@ The code used to train the model (<a href="https://github.com/KatynaSada/SparseG
 
 ### Parameters for training
 
-There are a few optional parameters that you can provide in addition to the input files:
+There are a various optional parameters that you can provide in addition to the input files:
 
   1. **-epoch**: the number of epoch to run during the training phase (type=int).
 
@@ -219,7 +219,7 @@ There are a few optional parameters that you can provide in addition to the inpu
 
   4. **-batchsize**: the number of training examples in one forward/backward pass. The higher the batch size, the more memory space you'll need (type=int).
 
-  5. **-modeldir**: folder to store trained models (type=str).
+  5. **-modeldir**: the path of the folder to store trained models (type=str).
 
   6. **-cuda_id**: GPU ID (type=int).
 
@@ -231,7 +231,7 @@ There are a few optional parameters that you can provide in addition to the inpu
 
   10. **-final_neurons**: Number of neurons before the output and after concatenating (type=int).
 
-  11. **-result**: folder to store the results of the predictions of test (type=str).
+  11. **-result**: the path of the folder to store the results of the predictions of test (type=str).
 
   12. **-project**: wandb project name that you want to use (type=str).
 
@@ -268,15 +268,44 @@ python -u code/train_gpu_wb.py    -onto data/toy_example/samples1/drugcell_ont.t
                                   -predict data/toy_example/samples1/drugcell_test.txt
                                   -result results/toy_example/samples1/
                                   -project SparseGO_toy_example
-                                  -gpu_name my_GPU  > results/toy_example/samples1/train_correlation.log
+                                  -gpu_name my_GPU  > results/toy_example/samples1/train.log
 
 ```
 
 ## Testing
+The code <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/code/predict_gpu.py">_code/predict_gpu.py_<a> makes predictions using a pre-trained SparseGO network.
 
 ### Parameters for predicting
+There are a few optional parameters that you can provide in addition to the input files:
+
+  1. **-batchsize**: the number of training examples in one forward/backward pass. The higher the batch size, the more memory space you'll need (type=int).
+
+  2. **-load**: the path of the pre-trained model (type=str).
+
+  3. **-result**: the path of the folder where you want to store the results (type=str).
+
+  4. **-cuda**: GPU ID (type=int).
 
 ### Running the training code
+**1.** Activate SparseGO environment
+
+**2.** Make folder for test results
+
+**4.** Finally, to test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/test.sh">_cluster/test.sh_<a>:
+
+```angular2
+
+python -u code/predict_gpu.py -gene2id data/toy_example/samples1/gene2ind.txt
+                              -cell2id data/toy_example/samples1/cell2ind.txt
+                              -drug2id data/toy_example/samples1/drug2ind.txt
+                              -genotype data/toy_example/samples1/cell2mutation.txt
+                              -fingerprint data/toy_example/samples1/drug2fingerprint.txt
+                              -result results/toy_example/samples1/
+                              -predict data/toy_example/samples1/cell2ind.txt
+                              -load results/toy_example/samples1/best_model_p.pt
+                              -cuda 0 > results/toy_example/samples1/test.log
+
+```
 
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
