@@ -238,16 +238,17 @@ There are a few optional parameters that you can provide in addition to the inpu
 ### Running the training code
 1. Activate SparseGO environment
 2. Login to wandb account
+3. Make folders for the models and the test results (you can use the same folder)
 3. Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
 
 ```angular2
-python -u code/train_gpu_wb.py  -onto data/toy_example/samples1/drugcell_ont.txt
+python -u code/train_gpu_wb.py    -onto data/toy_example/samples1/drugcell_ont.txt
                                   -gene2id data/toy_example/samples1/gene2ind.txt
                                   -drug2id data/toy_example/samples1/drug2ind.txt
                                   -cell2id data/toy_example/samples1/cell2ind.txt
                                   -train data/toy_example/samples1/drugcell_train.txt
                                   -val data/toy_example/samples1/drugcell_val.txt
-                                  -modeldir $modeldir
+                                  -modeldir results/toy_example/samples1/
                                   -cuda 0
                                   -genotype data/toy_example/samples1/cell2mutation.txt
                                   -fingerprint data/toy_example/samples1/drug2fingerprint.txt
