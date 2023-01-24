@@ -54,7 +54,7 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
          train_predict = torch.zeros(0,1).cuda(cuda_id) # initialize training results tensor
 
          # Learning rate decay
-         optimizer.param_groups[0]['lr'] = lr0*(1/(1+decay_rate*epoch))
+         optimizer.param_groups[0]['lr'] = lr0*(1/(1+decay_rate*epoch)) # or epoch*epoch
 
          # Training epoch
          for i, (inputdata, labels) in enumerate(train_loader):
