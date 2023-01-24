@@ -44,6 +44,7 @@
         <li><a href="#Testing">Testing</a></li>
       </ul>
     </li>
+    <li><a href="#DeepMoA:-method-to-predict-the-MoA-of-drugs-using-DeepLIFT">DeepMoA</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -65,7 +66,7 @@ This project includes instructions for:
 * training a SparseGO network,
 * and using the DeepMoA method to predict the MoA of drugs.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 
 ### Built With
@@ -80,7 +81,7 @@ This project includes instructions for:
       <img src="images/geneontology.png" width="105" alt="geneontology" >
     </a>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 # Getting Started
@@ -133,7 +134,7 @@ SparseGO training/testing scripts require the following environmental setup:
   ```angular2
   source activate SparseGO
   ```
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 # Training and testing SparseGO
 ## Required input files
@@ -191,11 +192,17 @@ Required input files:
         * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
           * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+
 ## Training
+hola
 
-## Testing 
+## Testing
+hola
 
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+
+# DeepMoA: method to predict the MoA of drugs using DeepLIFT
 
 <!-- CONTRIBUTING -->
 # Contributing
@@ -211,14 +218,14 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 <!-- CONTACT -->
 # Contact
 
 Katyna Sada - ksada@unav.es - ksada@tecnun.es
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 
 <!-- ACKNOWLEDGMENTS -->
