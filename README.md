@@ -203,6 +203,7 @@ Required input files:
 ## Training
 
 ### Parameters for training
+
 There are a few optional parameters that you can provide in addition to the input files:
 
 1. **-epoch**: the number of epoch to run during the training phase (type=int).
