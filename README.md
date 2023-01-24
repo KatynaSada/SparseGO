@@ -236,10 +236,10 @@ There are a few optional parameters that you can provide in addition to the inpu
   13. **-gpu_name**: not important, just a reminder of which GPU you used (type=str).
 
 ### Running the training code
-1. Activate SparseGO environment
-2. Login to wandb account
-3. Make folders for the models and the test results (you can use the same folder)
-3. Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
+**1.** Activate SparseGO environment
+**2.** Login to wandb account
+**3.** Make folders for the models and the test results (you can use the same folder)
+**4.** Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
 
 ```angular2
 python -u code/train_gpu_wb.py    -onto data/toy_example/samples1/drugcell_ont.txt
