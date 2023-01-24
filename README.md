@@ -42,9 +42,12 @@
         <li><a href="#Required-input-files">Required input files</a></li>
         <li><a href="#Training">Training</a></li>
         <ul>
-          <li><a href="#Parameters">Parameters</a></li>
+          <li><a href="#Parameters-for-training">Parameters</a></li>
         </ul>
         <li><a href="#Testing">Testing</a></li>
+        <ul>
+          <li><a href="#Parameters-for-predicting">Parameters</a></li>
+        </ul>
       </ul>
     </li>
     <li><a href="#DeepMoA-method-to-predict-the-MoA-of-drugs-using-DeepLIFT">DeepMoA</a></li>
@@ -199,11 +202,13 @@ Required input files:
 
 ## Training
 
-### Parameters
+### Parameters for training
 hola
 
 ## Testing
 hola
+
+### Parameters for predicting
 
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
