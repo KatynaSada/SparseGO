@@ -44,7 +44,7 @@
         <li><a href="#Testing">Testing</a></li>
       </ul>
     </li>
-    <li><a href="#DeepMoA:-method-to-predict-the-MoA-of-drugs-using-DeepLIFT">DeepMoA</a></li>
+    <li><a href="#DeepMoA-method-to-predict-the-MoA-of-drugs-using-DeepLIFT">DeepMoA</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -202,7 +202,7 @@ hola
 
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
-# DeepMoA: method to predict the MoA of drugs using DeepLIFT
+# DeepMoA method to predict the MoA of drugs using DeepLIFT
 
 <!-- CONTRIBUTING -->
 # Contributing
