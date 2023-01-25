@@ -310,6 +310,10 @@ python -u code/predict_gpu.py -gene2id data/toy_example/samples1/gene2ind.txt
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 # DeepMoA method to predict the MoA of drugs using DeepLIFT
+The method to predict the MoA of drugs is described in the next notebook... 
+<a href="https://katynasada.github.io/DeepMoA_SparseGO/">_DeepMoA_<a>
+
+
 
 <!-- CONTRIBUTING -->
 # Contributing
