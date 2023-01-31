@@ -160,7 +160,7 @@ Required input files:
         OR
       * _cell2expression.txt_: a comma-delimited file where each row has 15014 values indicating the expression of 15014 genes.
         * The script to download the expression data and create the file is provided in _extra_ folder (_get_expression_matrix.R_). It requires the _cell2ind.txt_ file.
-      The column index of each gene should match with those in _gene2ind.txt_ file. The line number should
+        *The column index of each gene should match with those in _gene2ind.txt_ file. The line number should
       match with the indices of cells in _cell2ind.txt_ file.
 2. Drug feature files:
     * **_drug2ind.txt_**: a tab-delimited file where the 1st column is index of drug and the 2nd column is
