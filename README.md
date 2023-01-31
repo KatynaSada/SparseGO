@@ -257,32 +257,19 @@ wandb login APIKEY # APIKEY should be replaced by your API key.
 
 **4.** Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
 
+
 ```angular2
-python -u code/train_gpu_wb.py    -onto data/toy_example/samples1/drugcell_ont.txt
-                                  -gene2id data/toy_example/samples1/gene2ind.txt
-                                  -drug2id data/toy_example/samples1/drug2ind.txt
-                                  -cell2id data/toy_example/samples1/cell2ind.txt
-                                  -train data/toy_example/samples1/drugcell_train.txt
-                                  -val data/toy_example/samples1/drugcell_val.txt
-                                  -modeldir results/toy_example/samples1/
-                                  -cuda 0
-                                  -genotype data/toy_example/samples1/cell2mutation.txt
-                                  -fingerprint data/toy_example/samples1/drug2fingerprint.txt
-                                  -number_neurons_per_GO 6
-                                  -number_neurons_per_final_GO 6
-                                  -drug_neurons '100,50,6'
-                                  -final_neurons 6
-                                  -epoch 100
-                                  -batchsize 5000
-                                  -lr 0.1
-                                  -decay_rate 0.001
-                                  -predict data/toy_example/samples1/drugcell_test.txt
-                                  -result results/toy_example/samples1/
-                                  -project SparseGO_toy_example
-                                  -gpu_name my_GPU  > results/toy_example/samples1/train.log
+python -u code/train_gpu_wb.py -onto data/toy_example/samples1/drugcell_ont.txt -gene2id data/toy_example/samples1/gene2ind.txt -drug2id data/toy_example/samples1/drug2ind.txt -cell2id data/toy_example/samples1/cell2ind.txt -train data/toy_example/samples1/drugcell_train.txt -val data/toy_example/samples1/drugcell_val.txt -modeldir results/toy_example/samples1/ -cuda 0 -genotype data/toy_example/samples1/cell2mutation.txt -fingerprint data/toy_example/samples1/drug2fingerprint.txt -number_neurons_per_GO 6 -number_neurons_per_final_GO 6 -drug_neurons '100,50,6' -final_neurons 6 -epoch 100 -batchsize 5000 -lr 0.1 -decay_rate 0.001 -predict data/toy_example/samples1/drugcell_test.txt -result results/toy_example/samples1/ -project SparseGO_toy_example -gpu_name my_GPU  > results/toy_example/samples1/train.log
 
+
+  
+```diff
+This is a command for running a Python script, train_gpu_wb.py, with various command-line arguments. The -u option specifies to run the script in unbuffered mode, which means that output will be written to the terminal immediately, rather than being buffered.
+The remaining arguments provide values for the various options that the script requires.
 ```
-
+  
+```
+  
 ## Testing
 The code <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/code/predict_gpu.py">_code/predict_gpu.py_<a> makes predictions using a pre-trained SparseGO network.
 
