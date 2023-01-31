@@ -1,6 +1,5 @@
-name: SparseGO
+name: SparseGO_new2
 channels:
-  - pytorch
   - conda-forge
   - defaults
 dependencies:
@@ -18,7 +17,6 @@ dependencies:
   - babel=2.9.1=pyhd3eb1b0_0
   - backcall=0.2.0=pyhd3eb1b0_0
   - bcrypt=3.2.0=py39h196d8e1_0
-  - beautifulsoup4=4.11.1=py39haa95532_0
   - binaryornot=0.4.4=pyhd3eb1b0_1
   - black=19.10b0=py_0
   - blas=1.0=mkl
@@ -33,7 +31,6 @@ dependencies:
   - click=8.0.4=py39haa95532_0
   - cloudpickle=2.0.0=pyhd3eb1b0_0
   - colorama=0.4.4=pyhd3eb1b0_0
-  - cookiecutter=1.7.3=pyhd3eb1b0_0
   - cryptography=36.0.0=py39h21b164f_0
   - cudatoolkit=11.3.1=h59b6b97_2
   - debugpy=1.5.1=py39hd77b12b_0
@@ -106,7 +103,6 @@ dependencies:
   - numpy-base=1.21.5=py39hca35cd5_2
   - numpydoc=1.2=pyhd3eb1b0_0
   - openpyxl=3.0.9=pyhd3eb1b0_0
-  - openssl=1.1.1q=h8ffe710_0
   - packaging=21.3=pyhd3eb1b0_0
   - pandas=1.4.2=py39hd77b12b_0
   - pandocfilters=1.5.0=pyhd3eb1b0_0
@@ -132,8 +128,6 @@ dependencies:
   - pylint=2.9.6=py39haa95532_1
   - pyls-spyder=0.4.0=pyhd3eb1b0_0
   - pynacl=1.4.0=py39hbd8134f_1
-  - pyopenssl=22.0.0=pyhd3eb1b0_0
-  - pyparsing=3.0.4=pyhd3eb1b0_0
   - pyqt=5.9.2=py39hd77b12b_6
   - pyrsistent=0.18.0=py39h196d8e1_0
   - pysocks=1.7.1=py39haa95532_0
@@ -145,8 +139,6 @@ dependencies:
   - python-lsp-server=1.2.4=pyhd3eb1b0_0
   - python-slugify=5.0.2=pyhd3eb1b0_0
   - python_abi=3.9=2_cp39
-  - pytorch=1.11.0=py3.9_cuda11.3_cudnn8_0
-  - pytorch-mutex=1.0=cuda
   - pytz=2021.3=pyhd3eb1b0_0
   - pywin32=302=py39h2bbff1b_2
   - pywin32-ctypes=0.2.0=py39haa95532_1000
@@ -204,7 +196,6 @@ dependencies:
   - urllib3=1.26.9=py39haa95532_0
   - vc=14.2=h21ff451_1
   - vs2015_runtime=14.27.29016=h5e58377_2
-  - watchdog=2.1.6=py39haa95532_0
   - wcwidth=0.2.5=pyhd3eb1b0_0
   - webencodings=0.5.1=py39haa95532_1
   - websocket-client=0.58.0=py39haa95532_4
@@ -233,17 +224,12 @@ dependencies:
     - flatbuffers==2.0.7
     - fonttools==4.33.3
     - gast==0.4.0
-    - google-auth==2.6.6
-    - google-auth-oauthlib==0.4.6
-    - google-pasta==0.2.0
     - grpcio==1.46.0
     - h11==0.14.0
     - h5py==3.7.0
     - ipywidgets==7.7.0
     - itsdangerous==2.1.2
     - joblib==1.1.0
-    - jupyter-echarts-pypkg==0.1.5
-    - jupyterlab-materialdarker==0.6.0
     - jupyterlab-widgets==1.1.0
     - kaleido==0.2.1
     - keras==2.10.0
@@ -270,8 +256,6 @@ dependencies:
     - protobuf==3.19.4
     - pyasn1==0.4.8
     - pyasn1-modules==0.2.8
-    - pyecharts==1.9.1
-    - pyecharts-jupyter-installer==0.0.3
     - pyreadr==0.4.7
     - pywinpty==1.1.6
     - rdkit==2022.3.5
@@ -291,17 +275,9 @@ dependencies:
     - tensorboard==2.10.0
     - tensorboard-data-server==0.6.1
     - tensorboard-plugin-wit==1.8.1
-    - tensorflow==2.10.0
-    - tensorflow-estimator==2.10.0
-    - tensorflow-io-gcs-filesystem==0.27.0
     - termcolor==2.0.1
     - threadpoolctl==3.1.0
     - tokenizers==0.12.1
-    - torch==1.11.0+cu113
-    - torch-scatter==2.0.9
-    - torch-sparse==0.6.13
-    - torchaudio==0.11.0+cu113
-    - torchvision==0.12.0+cu113
     - transformers==4.22.0
     - trio==0.22.0
     - trio-websocket==0.9.2

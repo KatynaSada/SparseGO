@@ -129,11 +129,12 @@ SparseGO training/testing scripts require the following environmental setup:
   ```angular2
   conda env create -f PATH_TO_SPARSEGO_PROJECT/environment/SparseGO_environment.yml
   ```
-  where ```PATH_TO_SPARSEGO_PROJECT``` should be replaced by your path where you have the SparseGO repository.
+  where ```PATH_TO_SPARSEGO_PROJECT``` should be replaced with the path where you have the SparseGO repository.
 
 * PyTorch >=1.10 and PyTorch Sparse: in the created SparseGO environment install PyTorch and PyTorch Sparse
     * Depending on the specification of your machine, run appropriate command to install PyTorch.
     The installation command line can be found in https://pytorch.org/get-started/locally/.
+      * Tip: to get your CUDA version ```nvcc --version```
 
     * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.0, simply run
     ```angular2
