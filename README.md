@@ -247,9 +247,9 @@ There are a various optional parameters that you can provide in addition to the 
 **1.** Activate SparseGO environment
 
 **2.** Login to wandb account
-If not installed...
+
 ```angular2
-pip install wandb
+pip install wandb # If is not installed
 wandb login APIKEY # APIKEY should be replaced by your API key.
 ```
 
