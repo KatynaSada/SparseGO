@@ -263,8 +263,8 @@ python -u code/train_gpu_wb.py -onto data/toy_example/samples1/drugcell_ont.txt 
 ```
   
 ```diff
-This is a command for running a Python script, train_gpu_wb.py, with various command-line arguments. The -u option specifies to run the script in unbuffered mode, which means that output will be written to the terminal immediately, rather than being buffered.
-The remaining arguments provide values for the various options that the script requires.
+- This is a command for running a Python script, train_gpu_wb.py, with various command-line arguments. The -u option specifies to run the script in unbuffered mode, which means that output will be written to the terminal immediately, rather than being buffered.
+- The remaining arguments provide values for the various options that the script requires.
 ```
   
 ## Testing
