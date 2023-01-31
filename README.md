@@ -132,13 +132,14 @@ SparseGO training/testing scripts require the following environmental setup:
   where ```PATH_TO_SPARSEGO_PROJECT``` should be replaced by your path where you have the SparseGO repository.
 
 * PyTorch >=1.10 and PyTorch Sparse: in the created SparseGO environment install PyTorch and PyTorch Sparse
-      * Depending on the specification of your machine, run appropriate command to install PyTorch.
-      The installation command line can be found in https://pytorch.org/get-started/locally/.
-      * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.0, simply run
-      ```angular2
-      pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+${CUDA}.html
-      ```
-      where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
+    * Depending on the specification of your machine, run appropriate command to install PyTorch.
+    The installation command line can be found in https://pytorch.org/get-started/locally/.
+
+    * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.0, simply run
+    ```angular2
+    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+${CUDA}.html
+    ```
+    where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
 
 * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
     When training or testing using the bash scripts provided (_train_wb.sh_ or _test.sh_), there's no need to run this as the example bash scripts already have the command line.
