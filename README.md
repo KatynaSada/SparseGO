@@ -136,9 +136,9 @@ SparseGO training/testing scripts require the following environmental setup:
     The installation command line can be found in https://pytorch.org/get-started/locally/.
       * Tip: to get your CUDA version ```nvcc --version```
 
-    * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.0, simply run
+    * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.1, simply run
     ```angular2
-    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+${CUDA}.html
+    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.1+${CUDA}.html
     ```
     where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
 
