@@ -97,7 +97,7 @@ This project includes instructions for:
 ```diff
 - The original DrugCell repository served as the basis for these instructions. I'd like to take this chance to thank the Trey Ideker Lab at UCSD!
 ```
-* <a href="https://pubmed.ncbi.nlm.nih.gov/33096023/">DrugCell<a>
+* <a href="https://github.com/idekerlab/DrugCell">DrugCell<a>
 * <a href="https://github.com/idekerlab">Trey Ideker Lab<a>
 
 ## Prerequisites
@@ -110,14 +110,6 @@ SparseGO training/testing scripts require the following environmental setup:
     * Python >=3.8
     * Anaconda
         * Relevant information for installing Anaconda can be found in: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
-    * PyTorch >=1.10 and PyTorch Sparse
-        * Depending on the specification of your machine, run appropriate command to install PyTorch.
-        The installation command line can be found in https://pytorch.org/get-started/locally/.
-        * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.0, simply run
-        ```angular2
-        pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+${CUDA}.html
-        ```
-        where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
     * Weights & Biases · MLOps platform (only for training)
 
       **1.** Create wandb free account at <a href="https://wandb.ai/site">https://wandb.ai/site<a>
@@ -135,8 +127,19 @@ SparseGO training/testing scripts require the following environmental setup:
 ## Environment set up for training and testing of SparseGO
 * Run the following command line inside the environment folder to set up a virtual environment (SparseGO).
   ```angular2
-  conda env create -f SparseGO_environment.yml
+  conda env create -f PATH_TO_SPARSEGO_PROJECT/environment/SparseGO_environment.yml
   ```
+  where ```PATH_TO_SPARSEGO_PROJECT``` should be replaced by your path where you have the SparseGO repository.
+
+* PyTorch >=1.10 and PyTorch Sparse: in the created SparseGO environment install PyTorch and PyTorch Sparse
+      * Depending on the specification of your machine, run appropriate command to install PyTorch.
+      The installation command line can be found in https://pytorch.org/get-started/locally/.
+      * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.0, simply run
+      ```angular2
+      pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+${CUDA}.html
+      ```
+      where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
+
 * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
     When training or testing using the bash scripts provided (_train_wb.sh_ or _test.sh_), there's no need to run this as the example bash scripts already have the command line.
   ```angular2
@@ -310,7 +313,7 @@ python -u code/predict_gpu.py -gene2id data/toy_example/samples1/gene2ind.txt
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 # DeepMoA method to predict the MoA of drugs using DeepLIFT
-The method to predict the MoA of drugs is described in the next notebook... 
+The method to predict the MoA of drugs is described in the next notebook...
 <a href="https://katynasada.github.io/DeepMoA_SparseGO/">_DeepMoA_<a>
 
 
