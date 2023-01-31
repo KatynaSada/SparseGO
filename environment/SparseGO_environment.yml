@@ -1,4 +1,4 @@
-name: SparseGO_new2
+name: SparseGO
 channels:
   - conda-forge
   - defaults
