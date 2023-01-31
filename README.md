@@ -153,16 +153,15 @@ SparseGO training/testing scripts require the following environmental setup:
 ## Required input files
 Required input files:
 1. Cell feature files:
-    * **_gene2ind.txt_**: Gene to ID mapping file
+    * **_gene2ind.txt_**: Gene to ID mapping file, a tab-delimited file where the 1st column is index of genes and the 2nd column is the symbol of the genes
     * **_cell2ind.txt_**: Cell to ID mapping file, a tab-delimited file where the 1st column is index of cells and the 2nd column is the name of cells (genotypes).
-      The column index of each gene should match with those in _gene2ind.txt_ file. The line number should
-      match with the indices of cells in _cell2ind.txt_ file.
-
     * **_cell2mutation.txt_** OR **_cell2expression.txt_**: choose the file depending on whether you want to train with mutations or with expression
       * _cell2mutation.txt_: a comma-delimited file where each row has 3,008 binary values indicating each gene is mutated (1) or not (0).
         OR
       * _cell2expression.txt_: a comma-delimited file where each row has 15014 values indicating the expression of 15014 genes.
         * The script to download the expression data and create the file is provided in _extra_ folder (_get_expression_matrix.R_). It requires the _cell2ind.txt_ file.
+      The column index of each gene should match with those in _gene2ind.txt_ file. The line number should
+      match with the indices of cells in _cell2ind.txt_ file.
 2. Drug feature files:
     * **_drug2ind.txt_**: a tab-delimited file where the 1st column is index of drug and the 2nd column is
     identification of each drug (e.g., SMILES representation or name). The identification of drugs
