@@ -14,7 +14,7 @@ from sparseLinearNew import SparseLinearNew
 
 class sparseGO_nn(nn.Module):
 
-    def __init__(self,layer_connections,num_neurons_per_GO, num_neurons_per_final_GO, num_neurons_drug, num_neurons_final, drug_dim):
+    def __init__(self,layer_connections,num_neurons_per_GO, num_neurons_per_final_GO, num_neurons_drug, num_neurons_final, drug_dim,gene2id_mapping):
 
         super(sparseGO_nn, self).__init__()
 
@@ -29,7 +29,7 @@ class sparseGO_nn(nn.Module):
         print("Number of final neurons: ", num_neurons_final)
 
         # (1) Layer of genes with terms
-        input_id = self.genes_layer(layer_connections[0])
+        input_id = self.genes_layer(layer_connections[0],gene2id_mapping)
 
         print("Number of term-term hierarchy levels:", len(layer_connections))
         # (2...) Layers of terms with terms
@@ -51,11 +51,11 @@ class sparseGO_nn(nn.Module):
         self.add_module('final_aux_tanh', nn.Tanh())
         self.add_module('final_linear_layer_output', nn.Linear(1, 1))
 
-    def genes_layer(self, genes_terms_pairs):
+    def genes_layer(self, genes_terms_pairs, gene2id):
         # Define the layer of terms with genes, each pair is repeated 6 times (for the 6 neurons)
 
         term2id = create_index(genes_terms_pairs[:,0])
-        gene2id = create_index(genes_terms_pairs[:,1])
+        # gene2id = create_index(genes_terms_pairs[:,1])
         self.gene_dim = len(gene2id)
         self.term_dim = len(term2id)
 

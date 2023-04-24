@@ -420,7 +420,7 @@ def pipeline():
 
     ## Training
     since3 = time.time()
-    model = sparseGO_nn(layer_connections,num_neurons_per_GO, num_neurons_per_final_GO, num_neurons_drug, num_neurons_final, drug_dim)
+    model = sparseGO_nn(layer_connections,num_neurons_per_GO, num_neurons_per_final_GO, num_neurons_drug, num_neurons_final, drug_dim, gene2id_mapping)
     time_elapsed3 = time.time() - since3
     print('\nModel created in {:.0f}m {:.0f}s'.format(
      time_elapsed3 // 60, time_elapsed3 % 60))
