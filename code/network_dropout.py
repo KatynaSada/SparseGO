@@ -57,12 +57,18 @@ class sparseGO_nn(nn.Module):
         self.add_module('final_aux_linear_layer', nn.Linear(num_neurons_final,1))
         self.add_module('final_aux_tanh', nn.Tanh())
         self.add_module('final_linear_layer_output', nn.Linear(1, 1))
-
+        
+        # # IN ORDER TO... set parameters of final linear layer and freeze them
+        # self.final_linear_layer_output.weight=nn.Parameter(torch.tensor([[0.6]], dtype=torch.float32))
+        # self.final_linear_layer_output.bias=nn.Parameter(torch.tensor([0.6], dtype=torch.float32))
+        # for param in self.final_linear_layer_output.parameters():
+        #     param.requires_grad = False
 
     def genes_layer(self, genes_terms_pairs, p_drop_genes, gene2id):
         # Define the layer of terms with genes, each pair is repeated 6 times (for the 6 neurons)
 
         term2id = create_index(genes_terms_pairs[:,0])
+
         self.gene_dim = len(gene2id)
         self.term_dim = len(term2id)
 
