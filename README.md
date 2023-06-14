@@ -15,8 +15,9 @@
     <br />
     <a href="https://github.com/KatynaSada/SparseGO_code/issues">Request Feature</a>
   </p>
-</div>
 
+[![DOI](https://zenodo.org/badge/589525718.svg)](https://zenodo.org/badge/latestdoi/589525718)
+</div>
 
 
 <!-- TABLE OF CONTENTS -->
