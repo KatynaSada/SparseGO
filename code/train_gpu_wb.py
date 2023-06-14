@@ -160,7 +160,7 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
                 "min_loss_val": min_loss,
                 })
 
-     # torch.save(model, model_dir + '/last_model.pt')
+     torch.save(model, model_dir + '/last_model.pt')
 
      print("Best performed model (loss) (epoch)\t%d" % best_model_l,'loss: {:.6f}'.format(min_loss))
 
@@ -168,9 +168,9 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
 
      print("Best performed model (spearman) (epoch)\t%d" % best_model_s,'corr: {:.6f}'.format(max_corr_spearman))
 
-     # artifact = wandb.Artifact("Last_model",type="model")
-     # artifact.add_file(model_dir + '/last_model.pt')
-     # run.log_artifact(artifact)
+     artifact = wandb.Artifact("Last_model",type="model")
+     artifact.add_file(model_dir + '/last_model.pt')
+     run.log_artifact(artifact)
 
      artifact = wandb.Artifact("Loss_model",type="model")
      artifact.add_file(model_dir + '/best_model_l.pt')
@@ -242,7 +242,7 @@ since0 = time.time()
 parser = argparse.ArgumentParser(description='Train sparseGO')
 
 inputdir="../data/toy_example/samples1/" # CHANGE
-modeldir="../results/toy_example/samples1/" # PUEDO CAMBIAR EL NOMBRE PARA GUARDAR EN OTRO SITIO
+modeldir="../results/toy_example/samples1/" # CHANGE
 ontology = "drugcell_ont.txt"
 mutation = "cell2mutation.txt"
 
@@ -296,7 +296,7 @@ print('\nLayer connections complete in {:.0f}m {:.0f}s'.format(
  time_elapsed2 // 60, time_elapsed2 % 60))
 ####
 
-# load cell/drug features
+# Load cell/drug features
 cell_features = np.genfromtxt(opt.genotype, delimiter=',')
 drug_features = np.genfromtxt(opt.fingerprint, delimiter=',')
 drug_dim = len(drug_features[0,:])
@@ -308,8 +308,6 @@ time_elapsed4 = time.time() - since4
 print('\nTrain data was ready in {:.0f}m {:.0f}s'.format(
  time_elapsed4 // 60, time_elapsed4 % 60))
 ####
-
-
 
 # PREDICT/TEST DATA!
 predict_data, cell2id_mapping, drug2id_mapping = prepare_predict_data(opt.predict, opt.cell2id, opt.drug2id)
@@ -414,7 +412,7 @@ def pipeline():
     num_neurons_drug[2] = config.num_neurons_drug_final
 
     num_neurons_final = opt.final_neurons # neurons before the output and after concatenating both branches
-    #num_neurons_final = round((num_neurons_drug[2]+num_neurons_per_final_GO)/2) # expresion
+    #num_neurons_final = round((num_neurons_drug[2]+num_neurons_per_final_GO)/2) # expression
 
     ###
 
@@ -457,6 +455,7 @@ def pipeline():
     since_test = time.time()
     predict("ModelSpearman",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + test_model, batch_size, opt.result, cell_features, drug_features, opt.cuda_id)
     predict("ModelLoss",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + '/best_model_l.pt', batch_size, opt.result, cell_features, drug_features, opt.cuda_id)
+    predict("ModelPearson",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + '/best_model_p.pt', batch_size, opt.result, cell_features, drug_features, opt.cuda_id)
 
     time_elapsed_test = time.time() - since_test
     print('\nTest complete in {:.0f}m {:.0f}s'.format(
