@@ -1,0 +1,16 @@
+data/train_sparseGO_expression/samples2/sparseGO_train.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples1/sparseGO_train.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples3/sparseGO_train.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples4/sparseGO_train.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples5/sparseGO_train.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/allsamples/sparseGO_train.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/allsamples/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples1/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/sample2/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/sample3/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/sample4/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/sample5/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples2/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples3/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples4/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
+data/train_sparseGO_expression/samples5/cell2expression_both.txt filter=lfs diff=lfs merge=lfs -text
