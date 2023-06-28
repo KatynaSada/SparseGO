@@ -107,7 +107,7 @@ SparseGO training/testing scripts require the following environmental setup:
 * Hardware
     * GPU server with CUDA>=12 installed...
       ```angular2
-      conda install -c "nvidia/label/cuda-12.1.0" cuda-toolkit
+      conda install -c anaconda cuda-toolkit
       ```
 
 * Software
