@@ -15,8 +15,9 @@
     <br />
     <a href="https://github.com/KatynaSada/SparseGO_code/issues">Request Feature</a>
   </p>
-</div>
 
+[![DOI](https://zenodo.org/badge/589525718.svg)](https://zenodo.org/badge/latestdoi/589525718)
+</div>
 
 
 <!-- TABLE OF CONTENTS -->
@@ -66,8 +67,8 @@
 
  <p align="center"><img src="images/network.png" width="700" alt="Logo"></p>
 
-
-Artificial intelligence (AI), and specifically Deep Neural Networks (DNNs), have been successfully applied to predict drug efficacy in cancer cell lines. However, understanding how the recommendation is carried out, is still a challenge when using DNNs. An algorithm called <a href="https://pubmed.ncbi.nlm.nih.gov/33096023/">DrugCell<a> showed that by simulating the Gene Ontology structure with a DNN, each neuron in the network can be assigned an interpretation. Here we present SparseGO, a sparse explainable neural network that extends this approach in two different ways: first, by optimizing the algorithm using sparse DNNs to accommodate any type of omics data as input, and second, by fusing an eXplainable Artificial Intelligence (XAI) technique with another machine learning algorithm to systematically predict the mechanism of action (MoA) of drugs.  
+Although Deep Neural Networks (DDNs) have been successful in predicting the efficacy of cancer drugs, the lack of explainability in their decision-making process is a significant challenge. Previous research (<a href="https://pubmed.ncbi.nlm.nih.gov/33096023/DrugCell">DrugCell<a>) proposed mimicking the Gene Ontology structure to allow for interpretation of each neuron in the network. However, these previous approaches require huge amount of GPU resources and hinder its extension to genome-wide models.
+We developed SparseGO, a sparse and interpretable neural network, for predicting drug response in cancer cell lines and their Mechanism of Action (MoA). To ensure model generalization, we trained it on multiple datasets and evaluated its performance using three cross-validation schemes. Its efficiency allows it to be used with gene expression. In addition, SparseGO integrates an eXplainable Artificial Intelligence (XAI) technique, DeepLIFT, with Support Vector Machines to computationally discover the MoA of drugs.   
 
 This project includes instructions for:
 * making predictions using a trained SparseGO network,
@@ -75,7 +76,6 @@ This project includes instructions for:
 * and using the DeepMoA method to predict the MoA of drugs.
 
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
-
 
 ### Built With
 
@@ -97,6 +97,7 @@ This project includes instructions for:
 ```diff
 - The original DrugCell repository served as the basis for these instructions. I'd like to take this chance to thank the Trey Ideker Lab at UCSD!
 ```
+
 * <a href="https://github.com/idekerlab/DrugCell">DrugCell<a>
 * <a href="https://github.com/idekerlab">Trey Ideker Lab<a>
 
@@ -172,18 +173,18 @@ Required input files:
     , when combined, a Morgan Fingerprint representation of each drug.
     The line number should match with the indices of drugs in _drug2ind.txt_ file.
 
-3. Training data file: **_drugcell_train.txt_**
+3. Training data file: **_sparseGO_train.txt_** / **_drugcell_train.txt_**
     * A tab-delimited file containing all data points that you want to use to train the model.
         The 1st column is identification of cells (genotypes), the 2nd column is identification of
         drugs and the 3rd column is an observed drug response in a floating number.
 
-4. Validation data file: **_drugcell_val.txt_**
+4. Validation data file: **_sparseGO_val.txt_** / **_drugcell_val.txt_**
     * A tab-delimited file that in the same format as the training data.
 
-5. Test data file: **_drugcell_test.txt_**
+5. Test data file: **_sparseGO_test.txt_** / **_drugcell_test.txt_**
     * A tab-delimited file containing all data points that you want to estimate drug response for. A tab-delimited file that in the same format as the training data.
 
-6. Ontology (hierarchy) file: **_drugcell_ont.txt_** OR **_sparsego_ont.txt_**
+6. Ontology (hierarchy) file: **_sparsego_ont.txt_** / **_drugcell_ont.txt_** 
     * A tab-delimited file that contains the ontology (hierarchy) that defines the structure of a branch
           of the model that encodes the genotypes. The first column is always a term (subsystem or pathway) or a gene,
           and the second column is another term or a gene.
@@ -202,7 +203,7 @@ Required input files:
            GO:0043552	FLT1	gene
           ```
 
-        * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutations model.
+        * _drugcell_ont.txt_ is the file used to create DrugCell and the SparseGO mutation models.
         * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
           * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
 

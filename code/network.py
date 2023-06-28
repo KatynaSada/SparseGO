@@ -55,7 +55,7 @@ class sparseGO_nn(nn.Module):
         # Define the layer of terms with genes, each pair is repeated 6 times (for the 6 neurons)
 
         term2id = create_index(genes_terms_pairs[:,0])
-        # gene2id = create_index(genes_terms_pairs[:,1])
+        
         self.gene_dim = len(gene2id)
         self.term_dim = len(term2id)
 

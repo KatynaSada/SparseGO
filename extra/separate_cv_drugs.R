@@ -7,14 +7,16 @@
 #'  - drugcell_validate.txt
 #'  - drugcell_test.txt
 #'  
-set.seed(12345)# anterior 1234
-mac <- "/Users/katyna/Library/CloudStorage/OneDrive-Tecnun/"
-windows <- "C:/Users/ksada/OneDrive - Tecnun/"
-computer <- mac
+set.seed(12345)
 
-#file <- paste(computer,"SparseGO_code/data/drugcell_all.csv",sep="")
-file <- paste(computer,"SparseGO_code/data/x/drugcell_all.csv",sep="")
-data <- read.csv(file, header = FALSE,sep = ";")
+mac <- "/Users/katyna/Library/CloudStorage/OneDrive-Tecnun/"
+windows <- "C:/Users/ksada/OneDrive - Tecnun/Tesis/Codigo/AUC/DataSets/"
+computer <- windows
+
+outputdir <- paste(computer,"train_sparseGO_mutations_insilico/",sep="")
+
+inputdir <- paste(computer,"train_sparseGO_mutations_insilico/allsamples/sparseGO_all_both.csv",sep="")
+data <- read.csv(inputdir, header = FALSE,sep = "\t",fileEncoding="UTF-8-BOM")
 
 drug_count <- as.data.frame(table(data$V2))
 # Shuffle the list of drugs randomly
@@ -39,7 +41,6 @@ grupo4 <- data[data$V2 %in% as.character(drug_count_shuffle[grupos==3,]$Var1),]
 grupo5 <- data[data$V2 %in% as.character(drug_count_shuffle[grupos==4,]$Var1),]
 
 # create the 5 folds... 
-outputdir <- paste(computer,"SparseGO_code/data/cross_validation_expression_drugs/",sep="")
 
 num_grupos_train <- c(2:k)
 
@@ -69,9 +70,9 @@ for (i in 1:k){
   
   # save txts
   sample_folder <- paste(outputdir,"samples",as.character(i),"/",sep="")
-  write.table(train, file = paste(sample_folder,"drugcell_train.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE)
-  write.table(test, file =paste(sample_folder,"drugcell_test.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE)
-  write.table(validate, file = paste(sample_folder,"drugcell_val.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE)
+  write.table(train, file = paste(sample_folder,"sparseGO_train.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE)
+  write.table(test, file =paste(sample_folder,"sparseGO_test.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE)
+  write.table(validate, file = paste(sample_folder,"sparseGO_val.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE)
   
   num_grupos_train[i] <- i # for next fold we need to change the train groups (change current test for next test group)
 }
