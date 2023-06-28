@@ -105,11 +105,14 @@ This project includes instructions for:
 SparseGO training/testing scripts require the following environmental setup:
 
 * Hardware
-    * GPU server with CUDA>=12 installed
+    * GPU server with CUDA>=12 installed...
+      ```angular2
+      conda install -c "nvidia/label/cuda-12.1.0" cuda-toolkit
+      ```
 
 * Software
     * Python >=3.8
-    * Anaconda
+    * Miniconda or anaconda
         * Relevant information for installing Anaconda can be found in: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
     * Weights & Biases · MLOps platform (only for training)
 

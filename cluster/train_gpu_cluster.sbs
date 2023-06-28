@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH --partition=xlong
+#SBATCH --job-name=LOLO_SparseGO
+#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:rtx3090:1
+#SBATCH --mem=15gb
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --output=/scratch/ksada/SparseGO/SparseGO_train1.out
+#SBATCH --mail-type=END
+#SBATCH --mail-user=ksada@unav.es
+
+#gpu:p40:2    gpu:rtx3090:2 gpu:p40:2 estaba poninendo 15 de memoria
+
+echo ===================================
+echo ===     Load the packages       ===
+echo ===================================
+echo `date`
+module load Anaconda3
+hostname
+
+echo train.sh ...
+cd /scratch/ksada/SparseGO/cluster
+
+sh /scratch/ksada/SparseGO/cluster/train_wb_1.sh
