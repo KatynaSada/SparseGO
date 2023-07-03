@@ -128,7 +128,7 @@ SparseGO training/testing scripts require the following environmental setup:
 ## Environment set up for training and testing of SparseGO
 **1.** Create environment called SparseGO
   ```angular2
-  conda create -p PATH_TO_SAVE_ENVIRONMENT/SparseGO 
+  conda create -p PATH_TO_SAVE_ENVIRONMENT/SparseGO
   ```
 **2.** Install the cuda-toolkit (other versions= https://anaconda.org/nvidia/cuda-toolkit)
   ```angular2
@@ -139,14 +139,14 @@ SparseGO training/testing scripts require the following environmental setup:
 **3.** Install PyTorch and PyTorch Sparse in the created SparseGO environment
     * Depending on the **specifications of your machine and cuda-toolkit installed**, run appropriate command to install PyTorch.
     The installation command line can be found in https://pytorch.org/get-started/locally/ or https://pytorch.org/get-started/previous-versions/.
-  
-  For 
+
+  For
   ```angular2
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
   ```
 **4.** After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch simply run (make sure you install it for the correct PyTorch version)...
     ```angular2
-    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-${PYTORCH_VERSION}+${CUDA}.html and 
+    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-${PYTORCH_VERSION}+${CUDA}.html and
     ```
     where ```${PYTORCH_VERSION}``` should be replaced by your version of PyTorch and ```${CUDA}``` should be replaced by ```cpu```, ```cu116```, ```cu117```, etc. depending on your PyTorch installation.
 
@@ -164,6 +164,8 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 # Training and testing SparseGO
+- The files needed to train the models are at https://gitlab.com/katynasada/sparsego_data.
+
 ## Required input files
 Required input files:
 1. Cell feature files:
@@ -197,7 +199,7 @@ Required input files:
 5. Test data file: **_sparseGO_test.txt_** / **_drugcell_test.txt_**
     * A tab-delimited file containing all data points that you want to estimate drug response for. A tab-delimited file that in the same format as the training data.
 
-6. Ontology (hierarchy) file: **_sparsego_ont.txt_** / **_drugcell_ont.txt_** 
+6. Ontology (hierarchy) file: **_sparsego_ont.txt_** / **_drugcell_ont.txt_**
     * A tab-delimited file that contains the ontology (hierarchy) that defines the structure of a branch
           of the model that encodes the genotypes. The first column is always a term (subsystem or pathway) or a gene,
           and the second column is another term or a gene.
@@ -283,7 +285,7 @@ python -u code/train_gpu_wb.py -onto data/toy_example/samples1/drugcell_ont.txt 
 - This is a command for running a Python script, train_gpu_wb.py, with various command-line arguments. The -u option specifies to run the script in unbuffered mode, which means that output will be written to the terminal immediately, rather than being buffered.
 - The remaining arguments provide values for the various options that the script requires.
 ```
-  
+
 ## Testing
 The code <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/code/predict_gpu.py">_code/predict_gpu.py_<a> makes predictions using a pre-trained SparseGO network.
 
