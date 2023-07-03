@@ -139,16 +139,16 @@ SparseGO training/testing scripts require the following environmental setup:
   ```angular2
   conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
   ```
-
-    * Tip: to verify your CUDA version ```nvcc --version```
+  * Tip: to verify your CUDA version ```nvcc --version```
 
 **4.** Install PyTorch and PyTorch Sparse in the created SparseGO environment
-    * Depending on the **specifications of your machine and cuda-toolkit installed**, run appropriate command to install PyTorch.
-    The installation command line can be found in https://pytorch.org/get-started/locally/ or https://pytorch.org/get-started/previous-versions/.
 
-  For cuda 11.8 and linux/windows OS...
-  ```angular2
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+  * Depending on the **specifications of your machine and cuda-toolkit installed**, run appropriate command to install PyTorch.
+  The installation command line can be found in https://pytorch.org/get-started/locally/ or https://pytorch.org/get-started/previous-versions/.
+
+   For cuda 11.8 and linux/windows OS...
+   ```angular2
+  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
   ```
 **5.** After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch simply run (make sure you install it for the correct PyTorch version)...
   ```angular2
@@ -161,7 +161,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
   ```
   where ```${PYTORCH_VERSION}``` should be replaced by your version of PyTorch and ```${CUDA}``` should be replaced by ```cpu```, ```cu116```, ```cu117```, etc. depending on your PyTorch installation.
 
-* Install also pandas and wandb
+* Also install the following packages...
   ```angular2
   pip install pandas
   pip install wandb
@@ -177,7 +177,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 <p align="right">(<a href="#About-The-Project">back to top</a>)</p>
 
 # Training and testing SparseGO
-- The files needed to train the models are at https://gitlab.com/katynasada/sparsego_data.
+- The files needed to train the models are at https://gitlab.com/katynasada/sparsego_data and http://drugcell.ucsd.edu/downloads/.
 
 ## Required input files
 Required input files:
