@@ -201,22 +201,6 @@ compound_names[,1] <- 0:(dim(na.omit(compound_names))[1]-1)
 library(mygene)
 CCLE<- readRDS("./DataSets/CCLE/CCLE_2015.rds")
 
-# sampleid <- database@sample[["sampleid"]] # cell lines in current dataset
-# CCLE_sampleid <- CCLE@molecularProfiles[["rna"]]@colData@listData[["sampleid"]] # row names of expression data
-# sum(is.na(match(sampleid,CCLE_sampleid))) # 67 lineas de CTRPv2 no estan en CCLE, 402 cell lines of GDSC (out of 1084) are not in CCLe
-
-# genes_exp <- (read.delim("C:/Users/ksada/OneDrive - Tecnun/SparseGO_code/data/cross_validation_expression/allsamples/gene2ind.txt",header = FALSE,row.names=1))
-# genes_exp_info <- queryMany(t(genes_exp), scopes="symbol", fields="ensembl.gene", species="human", returnall=FALSE,return.as = "DataFrame") # map gene symbol to ensembl gene
-# genes_exp_ensembl <- as.character(sapply(genes_exp_info@listData[["ensembl"]], function(x) x[[1]][1]))
-# CTRPv2expression <- summarizeMolecularProfiles(CCLE,
-#                                              cellNames(database),
-#                                              mDataType="rna",
-#                                              features=genes_exp_ensembl,
-#                                              verbose=FALSE)
-
-# sum(!is.na(match(t(genes_exp),CTRPv2expression@elementMetadata@listData[["Symbol"]])))
-# HACEN MATCH MENOS GENES QUE SI USO DEPMAP...
-
 # try with depmap 
 library("depmap")
 library("ExperimentHub")
