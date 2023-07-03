@@ -112,18 +112,7 @@ SparseGO training/testing scripts require the following environmental setup:
     * Miniconda or anaconda
         * Relevant information for installing Anaconda can be found in: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
     * Weights & Biases · MLOps platform (only for training)
-
-      **1.** Create wandb free account at <a href="https://wandb.ai/site">https://wandb.ai/site<a>
-
-      **2.**  Install the wandb library on your machine in a Python 3 environment
-      ```angular2
-      pip install wandb
-      ```
-      **3.** Login to the wandb library on your machine. You will find your API key here: <a href="https://wandb.ai/authorize.">https://wandb.ai/authorize.<a>
-      ```angular2
-      wandb login APIKEY
-      ```
-      where ```APIKEY``` should be replaced by your API key.
+      * Create wandb free account at <a href="https://wandb.ai/site">https://wandb.ai/site<a>
 
 ## Environment set up for training and testing of SparseGO
 **1.** Create environment called SparseGO which uses python=3.9
