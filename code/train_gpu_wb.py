@@ -130,6 +130,7 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
                     "loss_val": val_cum_loss
                     })
 
+
          # checkpoint = {
          #            'epoch': epoch+1,
          #            'state_dict': model.state_dict(),
@@ -319,10 +320,10 @@ num_genes = len(gene2id_mapping)
 
 # Configure the sweep – specify the parameters to search through, the search strategy, the optimization metric et all.
 sweep_config = {
-    'method': 'bayes', #grid, random
+    'method': 'grid', #bayes, random
 
     'metric': {
-      'name': 'correlation',
+      'name': 'pearson_test_ModelPearson',
       'goal': 'maximize'
     },
 

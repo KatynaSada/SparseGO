@@ -105,10 +105,7 @@ This project includes instructions for:
 SparseGO training/testing scripts require the following environmental setup:
 
 * Hardware
-    * GPU server with CUDA>=12 installed...
-      ```angular2
-      conda install -c anaconda cuda-toolkit
-      ```
+    * GPU server with CUDA installed
 
 * Software
     * Python >=3.8
@@ -129,22 +126,35 @@ SparseGO training/testing scripts require the following environmental setup:
       where ```APIKEY``` should be replaced by your API key.
 
 ## Environment set up for training and testing of SparseGO
-* Run the following command line inside the environment folder to set up a virtual environment (SparseGO).
+**1.** Create environment called SparseGO
   ```angular2
-  conda env create -f PATH_TO_SPARSEGO_PROJECT/environment/SparseGO_environment.yml
+  conda create -p PATH_TO_SAVE_ENVIRONMENT/SparseGO 
   ```
-  where ```PATH_TO_SPARSEGO_PROJECT``` should be replaced with the path where you have the SparseGO repository.
+**2.** Install the cuda-toolkit (other versions= https://anaconda.org/nvidia/cuda-toolkit)
+  ```angular2
+  conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
+  ```
+    * Tip: to verify your CUDA version ```nvcc --version```
 
-* PyTorch >=1.10 and PyTorch Sparse: in the created SparseGO environment install PyTorch and PyTorch Sparse
-    * Depending on the specification of your machine, run appropriate command to install PyTorch.
-    The installation command line can be found in https://pytorch.org/get-started/locally/.
-      * Tip: to get your CUDA version ```nvcc --version```
-
-    * After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch 1.13.1, simply run
+**3.** Install PyTorch and PyTorch Sparse in the created SparseGO environment
+    * Depending on the **specifications of your machine and cuda-toolkit installed**, run appropriate command to install PyTorch.
+    The installation command line can be found in https://pytorch.org/get-started/locally/ or https://pytorch.org/get-started/previous-versions/.
+  
+  For 
+  ```angular2
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+  ```
+**4.** After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch simply run (make sure you install it for the correct PyTorch version)...
     ```angular2
-    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.1+${CUDA}.html
+    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-${PYTORCH_VERSION}+${CUDA}.html and 
     ```
-    where ```${CUDA}``` should be replaced by either ```cpu```, ```cu116```, or ```cu117``` depending on your PyTorch installation.
+    where ```${PYTORCH_VERSION}``` should be replaced by your version of PyTorch and ```${CUDA}``` should be replaced by ```cpu```, ```cu116```, ```cu117```, etc. depending on your PyTorch installation.
+
+* Install also pandas and wandb
+  ```angular2
+  pip install pandas
+  pip install wandb
+  ```
 
 * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
     When training or testing using the bash scripts provided (_train_wb.sh_ or _test.sh_), there's no need to run this as the example bash scripts already have the command line.
@@ -256,10 +266,15 @@ There are a various optional parameters that you can provide in addition to the 
 pip install wandb # If is not installed
 wandb login APIKEY # APIKEY should be replaced by your API key.
 ```
+**3.** In <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/code/train_gpu_wb.py">train_gpu_wb.py_<a> change the entity parameter of the line 402 to your wandb username.
+```angular2
+sweep_id = wandb.sweep(sweep_config, entity="YOUR_USERNAME", project=opt.project)
+```
 
-**3.** Make folders for the models and the test results (you can use the same folder)
 
-**4.** Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
+**4.** Make folders for the models and the test results (you can use the same folder)
+
+**5.** Finally, to train AND test the SparseGO model, execute a command line similar to the example provided in <a href="https://github.com/KatynaSada/SparseGO_code/blob/main/cluster/train_wb.sh">_cluster/train_wb.sh_<a>:
 
 
 ```diff
