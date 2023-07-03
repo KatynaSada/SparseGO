@@ -108,7 +108,7 @@ SparseGO training/testing scripts require the following environmental setup:
     * GPU server with CUDA installed
 
 * Software
-    * Python >=3.8
+    * Python = 3.9
     * Miniconda or anaconda
         * Relevant information for installing Anaconda can be found in: https://docs.conda.io/projects/conda/en/latest/user-guide/install/.
     * Weights & Biases · MLOps platform (only for training)
@@ -126,11 +126,16 @@ SparseGO training/testing scripts require the following environmental setup:
       where ```APIKEY``` should be replaced by your API key.
 
 ## Environment set up for training and testing of SparseGO
-**1.** Create environment called SparseGO
+**1.** Create environment called SparseGO which uses python=3.9
   ```angular2
-  conda create -p PATH_TO_SAVE_ENVIRONMENT/SparseGO
+  conda create -p PATH_TO_SAVE_ENVIRONMENT/SparseGO python=3.9
   ```
-**2.** Install the cuda-toolkit (other versions= https://anaconda.org/nvidia/cuda-toolkit)
+
+**2.** Activate environment
+    ```angular2
+    conda activate PATH_TO_SAVE_ENVIRONMENT/SparseGO
+    ```      
+**3.** Install the cuda-toolkit (other versions= https://anaconda.org/nvidia/cuda-toolkit)
   ```angular2
   conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
   ```
@@ -140,20 +145,27 @@ SparseGO training/testing scripts require the following environmental setup:
     * Depending on the **specifications of your machine and cuda-toolkit installed**, run appropriate command to install PyTorch.
     The installation command line can be found in https://pytorch.org/get-started/locally/ or https://pytorch.org/get-started/previous-versions/.
 
-  For
+  For cuda 11.8 and linux/windows OS...
   ```angular2
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
   ```
 **4.** After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch simply run (make sure you install it for the correct PyTorch version)...
-    ```angular2
-    pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-${PYTORCH_VERSION}+${CUDA}.html and
-    ```
-    where ```${PYTORCH_VERSION}``` should be replaced by your version of PyTorch and ```${CUDA}``` should be replaced by ```cpu```, ```cu116```, ```cu117```, etc. depending on your PyTorch installation.
+  ```angular2
+  pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-2.0.1+cu118.html
+  ```
+
+  For other versions...
+  ```angular2
+  pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-${PYTORCH_VERSION}+${CUDA}.html and
+  ```
+  where ```${PYTORCH_VERSION}``` should be replaced by your version of PyTorch and ```${CUDA}``` should be replaced by ```cpu```, ```cu116```, ```cu117```, etc. depending on your PyTorch installation.
 
 * Install also pandas and wandb
   ```angular2
   pip install pandas
   pip install wandb
+  pip install mygene
+  pip install obonet
   ```
 
 * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
