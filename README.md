@@ -302,7 +302,7 @@ There are a few optional parameters that you can provide in addition to the inpu
 
   4. **-cuda**: GPU ID (type=int).
 
-### Running the testing code
+### Running the prediction code
 **1.** Activate SparseGO environment
 
 **2.** Make folder for test results
