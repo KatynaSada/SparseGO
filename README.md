@@ -75,7 +75,7 @@ This project includes instructions for:
 * training a SparseGO network,
 * and using the DeepMoA method to predict the MoA of drugs.
 
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 ### Built With
 
@@ -89,7 +89,7 @@ This project includes instructions for:
       <img src="images/geneontology.png" width="105" alt="geneontology" >
     </a>
 
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 # Getting Started
@@ -163,7 +163,7 @@ SparseGO training/testing scripts require the following environmental setup:
   ```angular2
   source activate SparseGO
   ```
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 # Training and testing SparseGO
 - The files needed to train the models are at https://gitlab.com/katynasada/sparsego_data and http://drugcell.ucsd.edu/downloads/.
@@ -224,7 +224,7 @@ Required input files:
         * _sparsego_ont.txt_ is the file used to create the SparseGO expression model.
           * The script to create the ontology file is provided in _extra_ folder (_get_gene_hierarchy.py_). It requires the _gene2ind.txt_ and _cell2expression.txt_ files.
 
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 ## Training
 
@@ -323,7 +323,7 @@ python -u code/predict_gpu.py -gene2id data/toy_example/samples1/gene2ind.txt
 
 ```
 
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 # DeepMoA method to predict the MoA of drugs using DeepLIFT
 The method to predict the MoA of drugs is described in the next notebook...
@@ -358,14 +358,14 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 <!-- CONTACT -->
 # Contact
 
 Katyna Sada - ksada@unav.es - ksada@tecnun.es
 
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 
 <!-- ACKNOWLEDGMENTS -->
@@ -374,6 +374,6 @@ Katyna Sada - ksada@unav.es - ksada@tecnun.es
 * [Weights & Biases](https://www.wandb.ai/)
 * [Sparse Linear](https://github.com/hyeon95y/SparseLinear)
 
-<p align="right">(<a href="#About-The-Project">back to top</a>)</p>
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
