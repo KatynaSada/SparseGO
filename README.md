@@ -38,22 +38,22 @@
       </ul>
     </li>
     <li>
-      <a href="#Training-and-testing-SparseGO">Training and testing SparseGO</a>
+      <a href="#training-and-testing-sparsego">Training and testing SparseGO</a>
       <ul>
-        <li><a href="#Required-input-files">Required input files</a></li>
-        <li><a href="#Training">Training</a></li>
+        <li><a href="#required-input-files">Required input files</a></li>
+        <li><a href="#training">Training</a></li>
         <ul>
-          <li><a href="#Parameters-for-training">Parameters</a></li>
-          <li><a href="#Running-the-training-code">Run the code</a></li>
+          <li><a href="#parameters-for-training">Parameters</a></li>
+          <li><a href="#running-the-training-code">Run the code</a></li>
         </ul>
-        <li><a href="#Testing">Testing</a></li>
+        <li><a href="#testing">Testing</a></li>
         <ul>
-          <li><a href="#Parameters-for-predicting">Parameters</a></li>
-          <li><a href="#Running-the-prediction-code">Run the code</a></li>
+          <li><a href="#parameters-for-predicting">Parameters</a></li>
+          <li><a href="#running-the-prediction-code">Run the code</a></li>
         </ul>
       </ul>
     </li>
-    <li><a href="#DeepMoA-method-to-predict-the-MoA-of-drugs-using-DeepLIFT">DeepMoA</a></li>
+    <li><a href="#deepmoa-method-to-predict-the-moa-of-drugs-using-deeplift">DeepMoA</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
