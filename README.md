@@ -34,7 +34,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#Environment-set-up-for-training-and-testing-of-SparseGO">Environment set up</a></li>
+        <li><a href="#environment-set-up-for-training-and-testing-of-sparsego">Environment set up</a></li>
       </ul>
     </li>
     <li>
