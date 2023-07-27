@@ -329,6 +329,19 @@ python -u code/predict_gpu.py -gene2id data/toy_example/samples1/gene2ind.txt
 The method to predict the MoA of drugs is described in the next notebook...
 <a href="https://katynasada.github.io/DeepMoA_SparseGO/">_DeepMoA_<a>
 
+It requires the following packages for algorithm execution and graphing...
+  ```angular2
+  pip install seaborn
+  pip install captum
+  pip install ipywidgets
+  pip install plotly
+  pip install openpyxl
+  pip install -U scikit-learn
+  pip install nbformat==4.2.0
+  pip install ipykernel
+  pip install -U kaleido
+  pip install colorlover
+  ```
 
 
 <!-- CONTRIBUTING -->
