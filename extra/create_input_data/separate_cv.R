@@ -10,27 +10,28 @@
 
 mac <- "/Users/katyna/Library/CloudStorage/OneDrive-Tecnun/"
 windows <- "C:/Users/ksada/OneDrive - Tecnun/Tesis/Codigo/AUC/DataSets/test_PRISM_standard/"
-computer <- windows
+computer <- mac
 
-file <- paste(computer,"allsamples/sparseGO_all_both.csv",sep="")
+file <- paste(computer,"SparseGO_code/data/train_PDCs2018/allsamples/PDCs2018_all.csv",sep="")
 a <- read.csv(file, header = FALSE,sep = "\t",fileEncoding="UTF-8-BOM")
-
+shuffled_data <- a[sample(nrow(a)), ]
 # For each unique group:
 # 1. Take the group as a hold out or test data set
 # 2. Take the remaining groups as a training data set
 # 3. Take some samples from the training data set as the validation set
 
 spec = c(group1 = 0.2, group2 = 0.2, group3 = 0.2, group4=0.2, group5=0.2)
+n_samples_validation <- 300
 
-g = sample(cut(seq(nrow(a)), 
-               nrow(a)*cumsum(c(0,spec)),
+g = sample(cut(seq(nrow(shuffled_data)), 
+               nrow(shuffled_data)*cumsum(c(0,spec)),
                labels = names(spec)
 ))
 
-res = split(a, g)
+res = split(shuffled_data, g)
 
 # create the 5 folds...
-outputdir <- paste(computer,"",sep="") # set output directory 
+outputdir <- paste(computer,"SparseGO_code/data/train_PDCs2018/",sep="") # set output directory 
 
 grupo1 <- res[["group1"]] # get data for group 1
 grupo2 <- res[["group2"]] # get data for group 2
@@ -56,8 +57,8 @@ for (i in 1:k){ # loop through each fold (k is the number of folds)
   }
   
   # create validation data
-  validate <- train_data[1:5000,] # select the first 5000 rows for validation
-  train <- train_data[5001:nrow(train_data),] # use the remaining rows for training
+  validate <- train_data[1:n_samples_validation,] # select the first n rows for validation
+  train <- train_data[(n_samples_validation+1):nrow(train_data),] # use the remaining rows for training
   
   # save the data files for the current fold
   sample_folder <- paste(outputdir,"samples",as.character(i),"/",sep="") # output directory for the current fold
@@ -68,20 +69,11 @@ for (i in 1:k){ # loop through each fold (k is the number of folds)
   num_grupos_train[i] <- i # update the train groups for the next fold (change current test for next test group)
 }
 
-# save all samples for final model 
+# save all samples for final model
 sample_folder <- paste(outputdir,"allsamples/",sep="")
 write.table(a, file = paste(sample_folder,"sparseGO_train.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE) # save train data
 write.table(validate, file =paste(sample_folder,"sparseGO_test.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE) # save test data
 write.table(validate, file = paste(sample_folder,"sparseGO_val.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE) # save validation data
-
-
-windows <- "C:/Users/ksada/OneDrive - Tecnun/Tesis/Codigo/AUC/DataSets/test_PRISM_cells_mutations/"
-computer <- windows
-outputdir <- paste(computer,"",sep="") # set output directory
-sample_folder <- paste(outputdir,"allsamples/",sep="")
-file <- paste(computer,"allsamples/sparseGO_all_PRISM.csv",sep="")
-a <- read.csv(file, header = FALSE,sep = "\t",fileEncoding="UTF-8-BOM")
-write.table(a, file =paste(sample_folder,"sparseGO_test.txt",sep=""), sep = "\t", row.names = F, col.names=F, quote = FALSE) # save test data
 
 # train <- rbind(res[["group1"]],res[["group2"]],res[["group3"]],res[["group4"]])
 # nrow(train)
