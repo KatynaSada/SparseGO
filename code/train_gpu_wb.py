@@ -197,7 +197,7 @@ def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file
 
     predict_feature, predict_label = predict_data
 
-    predict_label_gpu = train_label.to(device, non_blocking=True)
+    predict_label_gpu = predict_label.to(device, non_blocking=True)
 
     model.eval()
 
