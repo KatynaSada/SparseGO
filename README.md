@@ -104,8 +104,8 @@ This project includes instructions for:
 ## Prerequisites
 SparseGO training/testing scripts require the following environmental setup:
 
-* Hardware
-    * GPU server with CUDA installed
+* Recommended hardware
+    * GPU server with CUDA installed (can also run in non-CUDA devices)
 
 * Software
     * Python = 3.9
