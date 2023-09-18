@@ -19,7 +19,7 @@ import argparse
 import time
 import wandb
 
-def train_model(run,config,model, optimizer, criterion, train_data, cell_features, drug_features, batch_size, model_dir, cuda_id, num_epochs,decay_rate):
+def train_model(run,config,model, optimizer, criterion, train_data, cell_features, drug_features, batch_size, model_dir, device, num_epochs,decay_rate):
      print('\nTraining started...')
 
      since = time.time()
@@ -32,9 +32,9 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
     # data for train and validation
      train_feature, train_label, val_feature, val_label = train_data
 
-     # data to GPU
-     train_label_gpu = torch.autograd.Variable(train_label.cuda(cuda_id))
-     val_label_gpu = torch.autograd.Variable(val_label.cuda(cuda_id), requires_grad=False)
+     # data to  corresponding device
+     train_label_gpu = train_label.to(device, non_blocking=True)
+     val_label_gpu = val_label.to(device, non_blocking=True).detach()
      print("\nTraining samples: ",train_label_gpu.shape[0])
      print("Val samples: ",val_label_gpu.shape[0])
      print('-----------------')
@@ -50,8 +50,7 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
          train_cum_loss = 0
 
          model.train() # Tells the model that you are training it. So effectively layers which behave different on the train and test procedures know what is going on
-
-         train_predict = torch.zeros(0,1).cuda(cuda_id) # initialize training results tensor
+         train_predict = torch.zeros(0, 1, device=device) # initialize training results tensor
 
          # Learning rate decay
          optimizer.param_groups[0]['lr'] = lr0*(1/(1+decay_rate*epoch)) # or epoch*epoch
@@ -60,9 +59,9 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
          for i, (inputdata, labels) in enumerate(train_loader):
              # Convert torch tensor to Variable
              features = build_input_vector(inputdata, cell_features, drug_features)
-
-             cuda_features = torch.autograd.Variable(features.cuda(cuda_id))
-             cuda_labels = torch.autograd.Variable(labels.cuda(cuda_id))
+             
+             cuda_features = features.to(device)
+             cuda_labels = labels.to(device)
 
              # Forward pass & statistics
              out = model(cuda_features)
@@ -95,7 +94,7 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
          #Validation: random variables in training mode become static
          model.eval()
 
-         val_predict = torch.zeros(0,1).cuda(cuda_id)
+         val_predict = torch.zeros(0, 1, device=device)
 
          # Val epoch
          with torch.no_grad():
@@ -103,8 +102,7 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
                   # Convert torch tensor to Variable
                   features = build_input_vector(inputdata, cell_features, drug_features)
 
-                  cuda_features = torch.autograd.Variable(features.cuda(cuda_id))
-                  #cuda_labels = torch.autograd.Variable(labels.cuda(cuda_id))
+                  cuda_features = features.to(device)
 
                   # Forward pass & statistics
                   out = model(cuda_features)
@@ -129,7 +127,6 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
                     "spearman_val": val_corr_spearman,
                     "loss_val": val_cum_loss
                     })
-
 
          # checkpoint = {
          #            'epoch': epoch+1,
@@ -191,30 +188,29 @@ def train_model(run,config,model, optimizer, criterion, train_data, cell_feature
          time_elapsed // 60, time_elapsed % 60))
 
 
-def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file, batch_size, result_file, cell_features, drug_features, CUDA_ID):
+def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file, batch_size, result_file, cell_features, drug_features, device):
 
     feature_dim = gene_dim + drug_dim
 
-    model = torch.load(model_file, map_location='cuda:%d' % CUDA_ID)
+    model = torch.load(model_file)
+    model.to(device)
 
     predict_feature, predict_label = predict_data
 
-    predict_label_gpu = predict_label.cuda(CUDA_ID)
+    predict_label_gpu = train_label.to(device, non_blocking=True)
 
-    model.cuda(CUDA_ID)
     model.eval()
 
     test_loader = du.DataLoader(du.TensorDataset(predict_feature,predict_label), batch_size=batch_size, shuffle=False)
     test_cum_loss = 0
     #Test
-    test_predict = torch.zeros(0,1).cuda(CUDA_ID)
+    test_predict = torch.zeros(0, 1, device=device)
     with torch.no_grad():
         for i, (inputdata, labels) in enumerate(test_loader):
             # Convert torch tensor to Variable
             features = build_input_vector(inputdata, cell_features, drug_features)
 
-            cuda_features = Variable(features.cuda(CUDA_ID), requires_grad=False)
-            #cuda_labels = torch.autograd.Variable(labels.cuda(CUDA_ID))
+            cuda_features = features.to(device)
 
             # make prediction for test data
             out = model(cuda_features)
@@ -425,7 +421,7 @@ def pipeline():
      time_elapsed3 // 60, time_elapsed3 % 60))
     ####
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device(f"cuda:{opt.cuda_id}" if torch.cuda.is_available() else "cpu")
     if torch.cuda.device_count() > 1:
         print("Let's use", torch.cuda.device_count(), "GPUs!") # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
         model = nn.DataParallel(model)
@@ -451,12 +447,12 @@ def pipeline():
 
     print("Decay rate: ", decay_rate)
 
-    train_model(run,config, model, optimizer, criterion, train_data, cell_features, drug_features, batch_size, opt.modeldir, opt.cuda_id, config.epochs, decay_rate)
+    train_model(run,config, model, optimizer, criterion, train_data, cell_features, drug_features, batch_size, opt.modeldir, device, config.epochs, decay_rate)
 
     since_test = time.time()
-    predict("ModelSpearman",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + test_model, batch_size, opt.result, cell_features, drug_features, opt.cuda_id)
-    predict("ModelLoss",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + '/best_model_l.pt', batch_size, opt.result, cell_features, drug_features, opt.cuda_id)
-    predict("ModelPearson",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + '/best_model_p.pt', batch_size, opt.result, cell_features, drug_features, opt.cuda_id)
+    predict("ModelSpearman",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + test_model, batch_size, opt.result, cell_features, drug_features, device)
+    predict("ModelLoss",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + '/best_model_l.pt', batch_size, opt.result, cell_features, drug_features, device)
+    predict("ModelPearson",run, criterion, predict_data, num_genes, drug_dim, opt.modeldir + '/best_model_p.pt', batch_size, opt.result, cell_features, drug_features, device)
 
     time_elapsed_test = time.time() - since_test
     print('\nTest complete in {:.0f}m {:.0f}s'.format(
