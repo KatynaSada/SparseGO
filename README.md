@@ -67,7 +67,7 @@
 
  <p align="center"><img src="images/network.png" width="700" alt="Logo"></p>
 
-<a href=https://www.thelancet.com/journals/ebiom/article/PIIS2352-3964(23)00333-X/fulltext>Discovering the mechanism of action of drugs with a sparse explainable network<a>
+ <p align="center"><a href=https://www.thelancet.com/journals/ebiom/article/PIIS2352-3964(23)00333-X/fulltext>Discovering the mechanism of action of drugs with a sparse explainable network<a></p>
 
 Although Deep Neural Networks (DDNs) have been successful in predicting the efficacy of cancer drugs, the lack of explainability in their decision-making process is a significant challenge. Previous research (<a href="https://pubmed.ncbi.nlm.nih.gov/33096023/DrugCell">DrugCell<a>) proposed mimicking the Gene Ontology structure to allow for interpretation of each neuron in the network. However, these previous approaches require huge amount of GPU resources and hinder its extension to genome-wide models.
 We developed SparseGO, a sparse and interpretable neural network, for predicting drug response in cancer cell lines and their Mechanism of Action (MoA). To ensure model generalization, we trained it on multiple datasets and evaluated its performance using three cross-validation schemes. Its efficiency allows it to be used with gene expression. In addition, SparseGO integrates an eXplainable Artificial Intelligence (XAI) technique, DeepLIFT, with Support Vector Machines to computationally discover the MoA of drugs.   
