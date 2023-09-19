@@ -238,8 +238,8 @@ def predict(statistic,run,criterion,predict_data, gene_dim, drug_dim, model_file
 since0 = time.time()
 parser = argparse.ArgumentParser(description='Train sparseGO')
 
-inputdir="../data/toy_example/samples1/" # CHANGE
-modeldir="../results/toy_example/samples1/" # CHANGE
+inputdir="../data/toy_example_DrugCell/samples1/" # CHANGE
+modeldir="../results/toy_example_DrugCell/samples1/" # CHANGE
 ontology = "drugcell_ont.txt"
 mutation = "cell2mutation.txt"
 
