@@ -13,8 +13,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import util
 from util import *
-from network import sparseGO_nn
-#from network_dropout import sparseGO_nn
+#from network import sparseGO_nn
+from network_dropout import sparseGO_nn
 import argparse
 import time
 import wandb
@@ -402,6 +402,9 @@ def pipeline():
     run = wandb.init(settings=wandb.Settings(start_method="thread"))
 
     config = wandb.config # config is a variable that holds and saves hyperparameters and inputs
+
+    # Add notes to the run
+    wandb.run.notes = ""
 
     num_neurons_per_GO = config.num_neurons_per_GO # neurons for each term
     num_neurons_per_final_GO = config.num_neurons_per_final_GO # neurons of final term (root term)
