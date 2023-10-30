@@ -64,7 +64,7 @@ second_half_annotations = mg.getgenes(second_half_genes, fields='symbol,go.BP.id
 
 # Merge the resulting dataframes
 genes_annotations = pd.concat([first_half_annotations, second_half_annotations])
-genes_annotations["symbol"] = genes_ids["query"].values # change to the symbol used on the expression matrix
+genes_annotations["symbol_ori"] = genes_ids["query"].values # change to the symbol used on the expression matrix (should be the same one, but just to make sure)
 
 # Create go-gene dataframe of BP processes
 gene_go = []
@@ -72,11 +72,11 @@ for gene,row in genes_annotations.iterrows():
     annotations = row["go.BP"] # can be modified to MF or CC
     if isinstance(annotations,list): # Ensures that further processing is only performed if the value is a list.
         terms = [item for sublist in annotations for item in sublist.values()] 
-        pairs = itertools.product(terms,list([row["symbol"]])) # Generates all possible combinations (Cartesian product) between the values in terms and a list containing the value from the "symbol" 
+        pairs = itertools.product(terms,list([row["symbol_ori"]])) # Generates all possible combinations (Cartesian product) between the values in terms and a list containing the value from the "symbol" 
         result = [pair for pair in pairs if pair[0] != pair[1]]
         gene_go.append(result)
     elif isinstance(row["go.BP.id"],str): # if it only has 1 GO term, it is stored in go.BP.id
-        gene_go.append([(row["go.BP.id"],row["symbol"])])    
+        gene_go.append([(row["go.BP.id"],row["symbol_ori"])])    
         
 # flatten list
 gene_go = np.array([item for sublist in gene_go for item in sublist])
