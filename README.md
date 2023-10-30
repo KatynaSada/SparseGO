@@ -126,7 +126,7 @@ SparseGO training/testing scripts require the following environmental setup:
   ```angular2
   conda activate PATH_TO_SAVE_ENVIRONMENT/SparseGO
   ```      
-**3.** Install the cuda-toolkit (other versions= https://anaconda.org/nvidia/cuda-toolkit)
+**3.** Install the cuda-toolkit (other versions= https://anaconda.org/nvidia/cuda-toolkit), don't necessarily choose the most recent version, make sure that there is a version compatible with PyTorch.
   ```angular2
   conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
   ```
