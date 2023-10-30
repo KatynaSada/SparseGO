@@ -150,7 +150,7 @@ our_graph.add_edges_from(gene_go_list)
 [n for n in our_graph.nodes if len(our_graph.in_edges(n)) == 0]
 
 our_graph_copy = our_graph.copy()
-# remove nodes that have genes but no parents 
+# remove nodes that have genes but no parents (again, just to make sure), or genes whose annotations are not in the ontology (obsolete terms)
 for node in our_graph_copy.nodes:
     if len(our_graph.in_edges(node)) == 0 and node != "GO:0008150":# if node has genes but no parents
         print(node)
