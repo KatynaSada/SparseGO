@@ -42,7 +42,7 @@ gene2id_mapping = load_mapping(genes_file)
 
 mg = mygene.MyGeneInfo()
 # Change gene symbol/name/alias to entrezgene id
-genes_ids = mg.querymany(gene2id_mapping.keys(), scopes='symbol,name,alias', species="human",fields="entrezgene",as_dataframe=True)
+genes_ids = mg.querymany(gene2id_mapping.keys(), scopes='symbol', species="human",fields="entrezgene",as_dataframe=True)
 # genes_ids["query"] # has the genes symbols
 genes_ids.reset_index(level=0, inplace=True) # remove row name (change to column)
 genes_ids.dropna(subset=['entrezgene'], inplace=True) # remove genes with nans in entrezgene
