@@ -286,7 +286,6 @@ parser.add_argument('-result', help='Result file name',type=str, default=modeldi
 
 parser.add_argument('-project', help='W&B project name',type=str, default="Test")
 parser.add_argument('-sweep_name', help='W&B project name',type=str, default="samples")
-parser.add_argument('-gpu_name', help='GPU type', type=str, default="")
 
 # call functions
 opt = parser.parse_args()
@@ -342,10 +341,6 @@ sweep_config = {
         'criterion': {
             # 'values': ['MSELoss', 'L1Loss']
             'value': 'MSELoss'
-        },
-        'gpu': {
-            'value': opt.gpu_name
-            # 'value': 'RTX_A4000'
         },
         'num_neurons_drug_final': {
             # 'distribution': 'int_uniform',
@@ -419,8 +414,7 @@ num_genes = len(gene2id_mapping)
 
 def pipeline():
     # Initialize a new wandb run
-    run = wandb.init(settings=wandb.Settings(
-        start_method="thread"), name=opt.sweep_name)
+    run = wandb.init(settings=wandb.Settings(start_method="thread"), save_code=True, name=opt.sweep_name)
 
     # config is a variable that holds and saves hyperparameters and inputs
     config = wandb.config

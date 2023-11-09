@@ -1,7 +1,7 @@
 """
  This script computes the correlation between the real AUDRC and the predicted AUDRC for each drug on an individual basis.
  In the case of multiple models due to k-fold cross-validation, an average correlation is derived.
- It also computes the density plot of all models and its metrics. 
+ It also computes the density plot of all models and its metrics.
 """
 
 import argparse
@@ -14,7 +14,7 @@ import pickle
 from matplotlib import pyplot as plt
 import statistics
 import wandb
-import os 
+import os
 
 parser = argparse.ArgumentParser(description='SparseGO metrics')
 
@@ -65,7 +65,7 @@ def predict(predict_data, model, batch_size, cell_features, drug_features, CUDA_
 
     return test_corr, test_corr_spearman
 
-def load_select_data(file_name, cell2id, drug2id,selected_drug): # only select samples of chosen drug 
+def load_select_data(file_name, cell2id, drug2id,selected_drug): # only select samples of chosen drug
     feature = []
     label = []
 
@@ -94,9 +94,9 @@ wandb.init(project=opt.project, entity="katynasada", name="final metrics")
 for folder in opt.samples_folders:
     inputdir=opt.input_folder+folder+"/" # CHANGE
     resultsdir=opt.output_folder+folder+"/" # CHANGE
-    
+
     txt_type=opt.txt_type
-    
+
     drug2fingerprint=inputdir+"drug2fingerprint"+txt_type+".txt"
     test=inputdir+opt.labels_name
     drug2id=inputdir+"drug2ind"+txt_type+".txt"
@@ -104,65 +104,65 @@ for folder in opt.samples_folders:
     onto=inputdir+opt.ontology_name
     cell2id=inputdir+"cell2ind"+txt_type+".txt"
     gene2id=inputdir+"gene2ind"+txt_type+".txt"
-    
+
     cell_features = np.genfromtxt(genotype, delimiter=',')
     drug_features = np.genfromtxt(drug2fingerprint, delimiter=',')
-    
+
     cell2id_mapping = load_mapping(cell2id)
     drug2id_mapping = load_mapping(drug2id)
     gene2id_mapping = load_mapping(gene2id)
-    
+
     num_cells = len(cell2id_mapping)
     num_drugs = len(drug2id_mapping)
-    
+
     names = get_compound_names(inputdir+"compound_names"+txt_type+".txt")
     names.pop(0)
-        
+
     load=resultsdir+opt.model_name
     device = torch.device(f"cuda:{opt.cuda}" if torch.cuda.is_available() else "cpu")
     model = torch.load(load, map_location=device)
     batchsize =10000
-    
+
     # If the pre-trained model was wrapped with DataParallel, extract the underlying model
     if isinstance(model, torch.nn.DataParallel):
         model = model.module
     model = model.to(device)
-    
+
     predictions = {}
     predictions_spearman = {}
     for selected_drug_data in names:
-        selected_drug = names[633][0]
+        selected_drug = selected_drug_data[0]
         features, labels = load_select_data(test, cell2id_mapping, drug2id_mapping,selected_drug)
         predict_data = (torch.Tensor(features), torch.FloatTensor(labels))
         pearson, spearman=predict(predict_data,model, batchsize, cell_features, drug_features, opt.cuda)
         predictions[selected_drug_data[1]]=pearson.item()
         predictions_spearman[selected_drug_data[1]]=spearman.item()
-    
+
     predictions_dataframe = pd.DataFrame(predictions_spearman.items(),columns=['Name', folder+' Spearman'])
     predictions_dataframe_sort = predictions_dataframe.sort_values(by=[folder+' Spearman'], ascending=False)
-    
+
     # Save results for each model
     with open(resultsdir+"drug_predictions_dataframe_sort_test_spearman.pkl", 'wb') as file:
         pickle.dump(predictions_dataframe_sort, file)
-    
+
     predictions_dataframe = pd.DataFrame(predictions.items(),columns=['Name', folder+' Pearson'])
     predictions_dataframe_sort = predictions_dataframe.sort_values(by=[folder+' Pearson'], ascending=False)
-        
+
     # Save results for each model
     with open(resultsdir+"drug_predictions_dataframe_sort_test_pearson.pkl", 'wb') as file:
-        pickle.dump(predictions_dataframe_sort, file)   
-  
+        pickle.dump(predictions_dataframe_sort, file)
+
 
 # Compute the average correlation for each drug
 
 # PEARSON ----------------------------------------------------
-# Import all the results 
+# Import all the results
 list_correlation = {sample: None for sample in opt.samples_folders}
 for folder in opt.samples_folders:
     with open(opt.output_folder+folder+"/"+"drug_predictions_dataframe_sort_test_pearson.pkl", 'rb') as dictionary_file:
-        list_correlation[folder] = pickle.load(dictionary_file)        
-  
-# Join results   
+        list_correlation[folder] = pickle.load(dictionary_file)
+
+# Join results
 # Start with an empty dataframe
 all_df = pd.DataFrame()
 
@@ -237,7 +237,7 @@ ax.set_xlabel('Drugs', labelpad=-30, color='#333333',fontsize=50)
 ax.set_ylabel('Pearson correlation', labelpad=15, color='#333333',fontsize=50)
 ax.set_title('', color='#333333', weight='bold')
 
-colors2 = {'High confidence drugs (r>0.5)':'#A4C61A'}  
+colors2 = {'High confidence drugs (r>0.5)':'#A4C61A'}
 labels = list(colors2.keys())
 handles = [plt.Rectangle((0,0),1,1, color=colors2[label]) for label in labels]
 #plt.legend(handles, labels,fontsize=40, loc="lower left",bbox_to_anchor=(0, -0.215))
@@ -247,13 +247,13 @@ plt.ylim((-0.1,0.9))
 # Make the chart fill out the figure better.
 fig.tight_layout()
 # Save figure
-fig.savefig(opt.output_folder+'WaterfallDrugsSparseGO_pearson.png', transparent=True)  
+fig.savefig(opt.output_folder+'WaterfallDrugsSparseGO_pearson.png', transparent=True)
 
 artifact = wandb.Artifact("WaterfallDrugsSparseGO_pearson",type="plots")
 artifact.add_file(opt.output_folder+'WaterfallDrugsSparseGO_pearson.png')
 wandb.log_artifact(artifact)
-  
-# Top 10 drugs bar chart, pearson 
+
+# Top 10 drugs bar chart, pearson
 plt.rcParams['figure.figsize'] = (16, 22)
 fig, ax = plt.subplots()
 rhos_top=rhos[0:10]
@@ -296,7 +296,7 @@ ax.xaxis.grid(False)
 bar_color = bars[0].get_facecolor()
 for bar in bars:
   ax.text(
-      
+
       bar.get_x() + bar.get_width() / 2,
       bar.get_height() + 0.03,
       round(bar.get_height(), 3),
@@ -311,7 +311,7 @@ for bar in bars:
 i=0
 for bar in bars:
     ax.text(
-      
+
       bar.get_x() + bar.get_width() / 2,
       #0.05,
       0.01,
@@ -344,13 +344,13 @@ artifact.add_file(opt.output_folder+'top10sparse_pearson.png')
 wandb.log_artifact(artifact)
 
 # SPEARMAN ----------------------------------------------------
-# Import all the results 
+# Import all the results
 list_correlation = {sample: None for sample in opt.samples_folders}
 for folder in opt.samples_folders:
     with open(opt.output_folder+folder+"/"+"drug_predictions_dataframe_sort_test_spearman.pkl", 'rb') as dictionary_file:
         list_correlation[folder] = pickle.load(dictionary_file)
-        
-# Join results   
+
+# Join results
 # Start with an empty dataframe
 all_df = pd.DataFrame()
 
@@ -427,7 +427,7 @@ ax.set_ylabel('Spearman correlation', labelpad=15, color='#333333',fontsize=50)
 ax.set_title('', color='#333333',
              weight='bold')
 
-colors2 = {'High confidence drugs (r>0.5)':'#A4C61A'}  
+colors2 = {'High confidence drugs (r>0.5)':'#A4C61A'}
 labels = list(colors2.keys())
 handles = [plt.Rectangle((0,0),1,1, color=colors2[label]) for label in labels]
 #plt.legend(handles, labels,fontsize=40, loc="lower left",bbox_to_anchor=(0, -0.215))
@@ -436,12 +436,12 @@ plt.text(10, 0.25, str(percentage)+"%", fontsize=60,color='#000000')
 plt.ylim((-0.1,0.9))
 # Make the chart fill out the figure better.
 fig.tight_layout()
-fig.savefig(opt.output_folder+'WaterfallDrugsSparseGO_spearman.png', transparent=True)   
+fig.savefig(opt.output_folder+'WaterfallDrugsSparseGO_spearman.png', transparent=True)
 
 artifact = wandb.Artifact("WaterfallDrugsSparseGO_spearman",type="plots")
 artifact.add_file(opt.output_folder+'WaterfallDrugsSparseGO_spearman.png')
-wandb.log_artifact(artifact) 
-    
+wandb.log_artifact(artifact)
+
 # Top 10 drugs bar chart, spearman
 plt.rcParams['figure.figsize'] = (16, 22)
 fig, ax = plt.subplots()
@@ -485,7 +485,7 @@ ax.xaxis.grid(False)
 bar_color = bars[0].get_facecolor()
 for bar in bars:
   ax.text(
-      
+
       bar.get_x() + bar.get_width() / 2,
       bar.get_height() + 0.03,
       round(bar.get_height(), 3),
@@ -500,7 +500,7 @@ for bar in bars:
 i=0
 for bar in bars:
     ax.text(
-      
+
       bar.get_x() + bar.get_width() / 2,
       #0.05,
       0.01,
@@ -529,35 +529,35 @@ fig.savefig(opt.output_folder+'top10sparse_spearman.png', transparent=True)
 
 artifact = wandb.Artifact("top10sparse_spearman",type="plots")
 artifact.add_file(opt.output_folder+'top10sparse_spearman.png')
-wandb.log_artifact(artifact) 
-    
-# Calculate the density plot of all the models  
-    
+wandb.log_artifact(artifact)
+
+# Calculate the density plot of all the models
+
 list_predictions = {sample: None for sample in opt.samples_folders}
 list_models_pearsons = {sample: None for sample in opt.samples_folders}
 list_models_spearmans = {sample: None for sample in opt.samples_folders}
 for folder in opt.samples_folders:
     file_labels = opt.input_folder + folder + "/" + opt.labels_name
     file_predictions = opt.output_folder + folder + "/" + opt.predictions_name
-    
+
     real_auc = []
     sparse_auc = []
-    
+
     with open(file_labels, 'r') as fi:
         for line in fi:
             tokens = line.strip().split('\t')
             real_auc.append(float(tokens[2]))
-            
+
     real_aucA = np.array(real_auc)
-            
+
     with open(file_predictions, 'r') as fi:
         for line in fi:
             tokens = line.strip().split('\t')
             sparse_auc.append(float(tokens[0]))
-    
+
     sparse_aucA = np.array(sparse_auc)
     sparse = (real_aucA, sparse_aucA)
-    
+
     list_predictions[folder] = pd.DataFrame(list(zip(real_auc, sparse_auc,["SparseGO"]*len(real_auc))),columns =['Real AUC', 'Predicted AUC','Class',])
     list_models_pearsons[folder] = float(pearson_corr(torch.from_numpy(list_predictions[folder].loc[list_predictions[folder].loc[:,"Class"]=="SparseGO","Predicted AUC"].to_numpy()),torch.from_numpy(list_predictions[folder].loc[list_predictions[folder].loc[:,"Class"]=="SparseGO","Real AUC"].to_numpy())).numpy())
     list_models_spearmans[folder] = float(spearman_corr(torch.from_numpy(list_predictions[folder].loc[list_predictions[folder].loc[:,"Class"]=="SparseGO","Predicted AUC"].to_numpy()),torch.from_numpy(list_predictions[folder].loc[list_predictions[folder].loc[:,"Class"]=="SparseGO","Real AUC"].to_numpy())).numpy())
@@ -571,7 +571,7 @@ for key in list_predictions:
         all_predictions = df
     else:
         all_predictions = pd.concat([all_predictions, df])
-        
+
 # Calculate overall correlations and loss
 criterion=nn.MSELoss()
 
@@ -583,12 +583,12 @@ sp_overall = np.around(sp_overall,4)
 
 loss_overall = criterion(torch.from_numpy(all_predictions.loc[all_predictions.loc[:,"Class"]=="SparseGO","Predicted AUC"].to_numpy()),torch.from_numpy(all_predictions.loc[all_predictions.loc[:,"Class"]=="SparseGO","Real AUC"].to_numpy())).numpy()
 loss_overall = np.around(loss_overall,4)
-    
+
 # Calculate average correlations
 pe_average = np.around(statistics.mean(list(list_models_pearsons.values())),4)
 sp_average =  np.around(statistics.mean(list(list_models_spearmans.values())),4)
-    
-# PLOT RESULTS   
+
+# PLOT RESULTS
 plt.rcParams['figure.figsize'] = (10, 7)
 
 x = all_predictions.loc[all_predictions.loc[:,"Class"]=="SparseGO","Real AUC"].to_numpy()
@@ -607,9 +607,9 @@ x2, y2, z2 = x[idx], y[idx], z[idx]
 
 
 fig, ax = plt.subplots()
-plt.scatter(x2, y2, c=z2, cmap='turbo', marker='.',s=4) 
+plt.scatter(x2, y2, c=z2, cmap='turbo', marker='.',s=4)
 m, b = np.polyfit(x, y, 1)
-plt.plot(x, m*x+b,color='#333333') # line 
+plt.plot(x, m*x+b,color='#333333') # line
 
 #plt.xticks([])
 plt.yticks(fontsize=16)
@@ -650,9 +650,9 @@ plt.ylim((0,1))
 # Make the chart fill out the figure better.
 fig.tight_layout()
 fig.savefig(opt.output_folder+'density_plot.png', transparent=True)
-    
+
 artifact = wandb.Artifact("density_plot",type="plots")
 artifact.add_file(opt.output_folder+'density_plot.png')
-wandb.log_artifact(artifact) 
+wandb.log_artifact(artifact)
 
 wandb.finish()
