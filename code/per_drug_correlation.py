@@ -638,12 +638,12 @@ ax.set_xlabel('Real response (AUDRC)', labelpad=18, color='#333333',fontsize=25)
 ax.set_ylabel('Predicted response (AUDRC)', labelpad=18, color='#333333',fontsize=25)
 ax.set_title('Density plot', color='#000000', weight='bold',fontsize=30)
 
-plt.text(0.43, 0.18, "Overall spearman corr. = "+str(sp_overall), fontsize=15,color='#333333',weight='bold')
-plt.text(0.43, 0.14, "Overall pearson corr. = "+str(pe_overall), fontsize=15,color='#333333',weight='bold')
-plt.text(0.43, 0.10, "Overall MSE loss = "+str(loss_overall), fontsize=15,color='#333333',weight='bold')
+plt.text(0.43, 0.18, "Overall spearman corr. = "+str(sp_overall), fontsize=13,color='#333333',weight='bold')
+plt.text(0.43, 0.14, "Overall pearson corr. = "+str(pe_overall), fontsize=13,color='#333333',weight='bold')
+plt.text(0.43, 0.10, "Overall MSE loss = "+str(loss_overall), fontsize=13,color='#333333',weight='bold')
 
-plt.text(0.43, 0.06, "Average spearman corr. = "+str(sp_average), fontsize=15,color='#333333',weight='bold')
-plt.text(0.43, 0.02, "Average pearson corr. = "+str(pe_average), fontsize=15,color='#333333',weight='bold')
+plt.text(0.43, 0.06, "Average spearman corr. = "+str(sp_average), fontsize=13,color='#333333',weight='bold')
+plt.text(0.43, 0.02, "Average pearson corr. = "+str(pe_average), fontsize=13,color='#333333',weight='bold')
 
 #plt.xlim((0,1))
 #plt.ylim((0,1))
