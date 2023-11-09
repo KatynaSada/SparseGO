@@ -18,7 +18,7 @@ from sparseLinearNew import SparseLinearNew
 
 class sparseGO_nn(nn.Module):
 
-    def __init__(self,layer_connections,num_neurons_per_GO, num_neurons_per_final_GO, num_neurons_drug, num_neurons_final, drug_dim, gene2id_mapping, p_drop_final=0,p_drop_genes=0,p_drop_terms=0,p_drop_drugs=0):
+    def __init__(self,layer_connections,num_neurons_per_GO, num_neurons_per_final_GO, num_neurons_drug, num_neurons_final, drug_dim, gene2id_mapping, p_drop_final=0,p_drop_genes=0.1,p_drop_terms=0.1,p_drop_drugs=0.1):
 
         super(sparseGO_nn, self).__init__()
 
