@@ -645,8 +645,8 @@ plt.text(0.43, 0.10, "Overall MSE loss = "+str(loss_overall), fontsize=15,color=
 plt.text(0.43, 0.06, "Average spearman corr. = "+str(sp_average), fontsize=15,color='#333333',weight='bold')
 plt.text(0.43, 0.02, "Average pearson corr. = "+str(pe_average), fontsize=15,color='#333333',weight='bold')
 
-plt.xlim((0,1))
-plt.ylim((0,1))
+#plt.xlim((0,1))
+#plt.ylim((0,1))
 # Make the chart fill out the figure better.
 fig.tight_layout()
 fig.savefig(opt.output_folder+'density_plot.png', transparent=True)
