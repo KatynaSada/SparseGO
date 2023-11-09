@@ -645,6 +645,12 @@ plt.text(0.43, 0.10, "Overall MSE loss = "+str(loss_overall), fontsize=13,color=
 plt.text(0.43, 0.06, "Average spearman corr. = "+str(sp_average), fontsize=13,color='#333333',weight='bold')
 plt.text(0.43, 0.02, "Average pearson corr. = "+str(pe_average), fontsize=13,color='#333333',weight='bold')
 
+print("Overall spearman corr. = "+str(sp_overall))
+print("Overall pearson corr. = "+str(pe_overall))
+print("Overall MSE loss = "+str(loss_overall))
+print("Average spearman corr. = "+str(sp_average))
+print("Average pearson corr. = "+str(pe_average))
+
 #plt.xlim((0,1))
 #plt.ylim((0,1))
 # Make the chart fill out the figure better.
