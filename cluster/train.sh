@@ -45,7 +45,7 @@ do
 
   testdatafile=$inputdir"drugcell_test"$type".txt" # CHANGE THIS - test file
 
-  python -u "../code/train_gpu_wb.py" -onto $ontfile -gene2id $gene2idfile -drug2id $drug2idfile -cell2id $cell2idfile -train $traindatafile -val $valdatafile -modeldir $modeldir -cuda $cudaid -genotype $mutationfile -fingerprint $drugfile -number_neurons_per_GO $number_neurons_per_GO -number_neurons_per_final_GO $number_neurons_per_final_GO -drug_neurons $drug_neurons -final_neurons $final_neurons -epoch $epoch -batchsize $batch -lr $lr -decay_rate $decay_rate -predict $testdatafile -result $modeldir -project $projectname -sweep_name $samples >$modeldir"train_correlation.log"
+  python -u "../code/train.py" -onto $ontfile -gene2id $gene2idfile -drug2id $drug2idfile -cell2id $cell2idfile -train $traindatafile -val $valdatafile -modeldir $modeldir -cuda $cudaid -genotype $mutationfile -fingerprint $drugfile -number_neurons_per_GO $number_neurons_per_GO -number_neurons_per_final_GO $number_neurons_per_final_GO -drug_neurons $drug_neurons -final_neurons $final_neurons -epoch $epoch -batchsize $batch -lr $lr -decay_rate $decay_rate -predict $testdatafile -result $modeldir -project $projectname -sweep_name $samples >$modeldir"train_correlation.log"
 done
 # ----- Create the plots/graphs/final metrics
 input_folder="../data/"$foldername"/"

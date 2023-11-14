@@ -29,4 +29,4 @@ fi
 source activate  C:/Users/ksada/Anaconda3/envs/SparseGO
 
 
-python -u ../code/predict_gpu.py -gene2id $gene2idfile -cell2id $cell2idfile -drug2id $drug2idfile -genotype $mutationfile -fingerprint $drugfile -result $resultdir -predict $testdatafile -load $modelfile -cuda $cudaid > $directory/test_correlation.log
+python -u ../code/predict.py -gene2id $gene2idfile -cell2id $cell2idfile -drug2id $drug2idfile -genotype $mutationfile -fingerprint $drugfile -result $resultdir -predict $testdatafile -load $modelfile -cuda $cudaid > $directory/test_correlation.log

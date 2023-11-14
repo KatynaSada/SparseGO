@@ -22,4 +22,4 @@ hostname
 echo train.sh ...
 cd /scratch/ksada/SparseGO/cluster
 
-sh /scratch/ksada/SparseGO/cluster/train_wb_1.sh
+sh /scratch/ksada/SparseGO/cluster/train.sh
