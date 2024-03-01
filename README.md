@@ -158,6 +158,7 @@ SparseGO training/testing scripts require the following environmental setup:
   pip install wandb
   pip install mygene
   pip install obonet
+  pip install scipy
   ```
 
 * After setting up the conda virtual environment, make sure to activate environment before executing SparseGO scripts.
