@@ -21,7 +21,7 @@ shuffled_data <- a[sample(nrow(a)), ]
 # 3. Take some samples from the training data set as the validation set
 
 spec = c(group1 = 0.2, group2 = 0.2, group3 = 0.2, group4=0.2, group5=0.2)
-n_samples_validation <- 300
+n_samples_validation <- 5000
 
 g = sample(cut(seq(nrow(shuffled_data)), 
                nrow(shuffled_data)*cumsum(c(0,spec)),
