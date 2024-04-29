@@ -139,7 +139,7 @@ SparseGO training/testing scripts require the following environmental setup:
 
    For cuda 11.8 and linux/windows OS...
    ```angular2
-  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+  pip install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
   ```
 **5.** After installing PyTorch install <a href="https://pypi.org/project/torch-sparse/">PyTorch Sparse<a>, to install the binaries for PyTorch simply run (make sure you install it for the correct PyTorch version)...
   ```angular2
